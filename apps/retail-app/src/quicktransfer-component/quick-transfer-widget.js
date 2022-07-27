@@ -16,10 +16,8 @@ function QuickTransfer() {
             <div className="amount">
                 <fds-textfield icon="money"></fds-textfield>
             </div>
-        </div>
-        <div className="action-button">
-            <div className="send-button">
-                <fds-button label="Send" icon="check"></fds-button>
+            <div className="button">
+              <fds-button label="Send" icon="check"></fds-button>
             </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ function Sheet() {
   const target = `/accounts/${accountId}/transactions?offset=0&limit=100`;
 
   let [transactions, setTransactions] = useState([]);
-  let [display, setDisplay] = useState([]);
+  let [toggle, setToggle] = useState([]);
 
   const getTransactions = useCallback(async () => {
     try {
@@ -50,7 +50,6 @@ function Sheet() {
   });
 
 
-
   function compareDates(date){
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -72,18 +71,17 @@ function Sheet() {
 
   useEffect(() => {
     getTransactions();
-    setDisplay(all);
   }, [])
 
   return (
+    
     <div className="Sheet"> 
       <div className="sheet-item">
         <div className="header-transaction">
           <span className="title">Transactions</span>
         </div>
         <div className="layout">
-          <Grid container spacing={2} alignItems="center"
-               justifyContent="center">
+          <Grid container spacing={2} alignItems="center" justifyContent="center">
             <Grid item xs={6} md={8}>
               <fds-button-toggle-group>
                 <fds-button-toggle label="All"></fds-button-toggle>
@@ -112,7 +110,7 @@ function Sheet() {
                 </div>
                 )}
               <div className="transaction-list">
-                {display}
+                {all}
               </div>
             </Grid>
           </Grid>

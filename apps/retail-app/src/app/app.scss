@@ -45,21 +45,54 @@ body {
       }
 
       .header {
-        width:100%;
-        height:180px;
-        background-color: var(--fds-primary); 
+        background-image: url("../assets/Background.png");
+        height: 350px;
+        width: 100%;
+        background-color: var(--fds-background);
+      }
+
+      .header-title{
+        padding: 48px;
+        height: 70px;
+        width: 300px;
+      }
+
+      .header-icon{
+        float: left;
+      }
+
+      .app-title{
+        float: left;
+        margin-left: 10px;
+        font: var(--fds-headline-3);
+        color: var(--fds-surface);
+      }
+
+      .welcome-msg{
+        font: var(--fds-body-1);
+        color: var(--fds-surface);
       }
 
       .main-content{
-        padding-left: 10%;
-        padding-right: 10%;
-        padding-top: 10%;
+        padding: 10%;
+        padding-top: 5%;
+        background-color: var(--fds-background);
       }
 
       .side-content{
         margin-bottom: 10px;
       }
 
+      .cards {
+        float: left;
+        padding-left: 18px;
+        width: 100%;
+      }
+
+      .card{
+        margin: 20px;
+        float: left;
+      }
 }
 
 html,

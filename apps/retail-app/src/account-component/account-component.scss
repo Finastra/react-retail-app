@@ -1,0 +1,81 @@
+@use '@finastra/fds-theme' as fds;
+
+body {
+   .account-card{
+    height: 169.46px;
+    width: 319px;
+    border-radius: 4px;
+    background-color: var(--fds-surface);;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+   }
+
+   .account-content{
+    padding: 24px;
+    width: 271px;
+    height: 121.46px;
+   }
+
+   .account-info{
+    margin: 14px;
+    justify-content: space-between;
+    width: 250px;
+    height: 50px;
+   }
+
+   .account-icon{
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    background-color: var(--fds-secondary-lighter);
+    float: left;
+   }
+
+   .account-title{
+    padding-left: 12px;
+    float: left;
+    font: var(--fds-body-2);
+    color: var(--fds-on-background);
+   }
+
+   .account-balance{
+    font: var(--fds-headline-4);
+   }
+
+   .material-icons{
+    color: var(--fds-primary);
+   }
+
+   .divider{
+    border-bottom: 1px solid;
+    border-color: rgb(217, 218, 217);
+    padding: 7px;
+   }
+
+   .account-number{
+    padding-top: 8px;
+    font: var(--fds-body-3);
+    color: var(--fds-on-background);
+   }
+
+   .more-icon{
+    position: absolute;
+    padding-left: 260px;
+   }
+
+   .more-style{
+    color: var(--fds-primary);
+   }
+}
+
+html,
+body {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include fds.use-dark-theme();
+  }
+}

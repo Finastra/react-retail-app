@@ -12,15 +12,10 @@ import { Grid } from '@mui/material';
 import Sheet from '../transaction-component/transaction-widget';
 import QuickTransfer from '../quicktransfer-component/quick-transfer-widget';
 import MyAdvisor from '../myadvisor-component/myadvisor-widget';
-
-
-import { Route, Routes, Link } from 'react-router-dom';
+import Account from '../account-component/account-component';
+import Chart from '../chart-component/chart-component';
 
 export function App() {
-
-
-
-
 
   return (
     <div className="App">
@@ -51,7 +46,7 @@ export function App() {
         </div>
       </div>
       <div slot="appContent">
-        <fds-app-bar appname="Super App" logoredirecturi="">
+        <fds-app-bar logoredirecturi="">
           <mwc-icon-button icon="menu" slot="navigationIcon"></mwc-icon-button>
           <mwc-icon-button icon="search" slot="actions"></mwc-icon-button>
           <mwc-icon-button icon="notifications_none" slot="actions"></mwc-icon-button>
@@ -66,25 +61,45 @@ export function App() {
           <mwc-icon-button icon="more_vert" slot="actions"></mwc-icon-button>
         </fds-app-bar>
         <div className="header">
+          <div className="header-title">
+            <div className="header-icon">
+              <img width={64} height={64} src={require("../assets/Header-Icon.png")}/>
+            </div>
+            <div className="app-title">
+              <span>Retail app</span>
+              <div className="welcome-msg">
+                <span> Welcome Back, ...</span>
+              </div>
+            </div>
+          </div>
+          <div className="cards">
+            <div className="card">
+              <Account title="My Account"/>
+            </div>
+            <div className="card">
+              <Account title="Savings"/>
+            </div>
+            <div className="card">
+              <Account title="Loans"/>
+            </div>
+          </div>
         </div>
         <div className="content">
           <div className="main-content">
             <Grid container spacing={2}>
               <Grid item xs={6} md={8}>
-                  <Sheet>
-                  </Sheet>
+                  <Sheet/>
               </Grid>
               <Grid item xs={6} md={4}>
-                <div>
-                  <div className="side-content">
-                    <QuickTransfer></QuickTransfer>
-                  </div>
-                  <MyAdvisor></MyAdvisor>
+                <div className="side-content">
+                  <QuickTransfer/>
+                </div> 
+                <div className="side-content">
+                  <Chart/>
+                </div> 
+                <div className="side-content">
+                  <MyAdvisor/>
                 </div>
-              </Grid>
-              <Grid item xs={6} md={8}>
-              </Grid>
-              <Grid item xs={6} md={4}>
               </Grid>
             </Grid>
           </div>
