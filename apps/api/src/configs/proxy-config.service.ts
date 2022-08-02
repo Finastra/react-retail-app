@@ -19,7 +19,17 @@ export class ProxyConfigService implements ProxyModuleOptionsFactory {
         id: 'ACCOUNT_INFORMATION_US',
         url: `${FFDC}/retail-us/me/account/v1`,
         config: {}
-      } 
+      },
+      {
+        id: 'CONSUMER_PROFILE',
+        url: `${FFDC}/retail-us/me/v1`,
+        config: {}
+      },
+      {
+        id: 'PERSON_TO_PERSON',
+        url: `${FFDC}/retail-us/me/p2p/v1`,
+        config: {}
+      }
     ];
 
     this.logger.log(services);

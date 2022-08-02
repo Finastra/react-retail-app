@@ -1,6 +1,9 @@
 @use '@finastra/fds-theme' as fds;
 
+
+
 body {
+    background-color: var(--fds-background);
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -52,7 +55,8 @@ body {
       }
 
       .header-title{
-        padding: 48px;
+        padding: 32px;
+        padding-top:48px;
         height: 70px;
         width: 300px;
       }
@@ -73,6 +77,10 @@ body {
         color: var(--fds-surface);
       }
 
+      .content{
+        padding-top: 48px;
+      }
+
       .main-content{
         padding: 10%;
         padding-top: 5%;
@@ -83,16 +91,6 @@ body {
         margin-bottom: 10px;
       }
 
-      .cards {
-        float: left;
-        padding-left: 18px;
-        width: 100%;
-      }
-
-      .card{
-        margin: 20px;
-        float: left;
-      }
 }
 
 html,

@@ -24,13 +24,24 @@ body {
     }
     
     .layout{
-        width: 100%;
-        height: 100%;
         padding-top: 24px;
     }
 
     .transaction-list{
         padding-top: 24px;
+        display: none;
+        max-height: 800px;
+        overflow: hidden;
+    }
+
+    .transaction-list:hover{
+        overflow-y: overlay;
+    }
+
+
+    .transaction-list.active{
+        padding-top: 24px;
+        display: block;
     }
 
     .progress{
@@ -49,6 +60,33 @@ body {
 
     .progress-bar-icon{
         color: var(--fds-primary);
+    }
+
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--fds-surface-selected);
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--fds-surface);
+    }
+    
+
+    fds-button-toggle-group{
+        --fds-button-toggle-min-width: 10px;
+        --fds-button-toggle-height: 24px;
+        --fds-button-toggle-width: 80px;
+    }
+
+    fds-button-toggle{
+        --fds-button-toggle-min-width: 10px;
+        --fds-button-toggle-height: 24px;
+        --fds-button-toggle-width: 80px;
     }
 }
 

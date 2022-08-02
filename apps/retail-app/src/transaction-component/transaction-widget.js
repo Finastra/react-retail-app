@@ -13,18 +13,21 @@ function Sheet() {
 
   const serverUri = 'http://localhost:3000';
   const serviceId = 'ACCOUNT_INFORMATION_US';
-  const accountId = '6787147';
+  const accountId = '~UIP8sfkWLqjf2mk6TM3cMBkq9XSUjejJZm5bLRekj.enzTPZvoKXEw1.TJmmC4b2';
   const target = `/accounts/${accountId}/transactions?offset=0&limit=100`;
 
+  const [activeIndex, setActiveIndex] = useState(1);
+  const handleClick = (index) => setActiveIndex(index);
+  const checkActive = (index, className) => activeIndex === index ? className : "";
+
   let [transactions, setTransactions] = useState([]);
-  let [toggle, setToggle] = useState([]);
 
   const getTransactions = useCallback(async () => {
     try {
       const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId}&target=${target}`);
       const data = await response.json();
       const filterByDate = data.reduce((groups, transactions) => {
-        const date = transactions.transactionDate;
+      const date = transactions.transactionDate;
         if (!groups[date]) {
           groups[date] = [];
         }
@@ -37,6 +40,30 @@ function Sheet() {
       console.log(e)
     }
   })
+
+  const expense = Object.keys(transactions).map(function(key) {
+    return(
+      <div>
+        <DateItem date={compareDates(key)}/>
+        {transactions[key].map(transaction => {
+          if (transaction.transactionAmount > 20) {
+           return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+         }})}
+      </div>
+    )
+  });
+
+  const income = Object.keys(transactions).map(function(key) {
+    return(
+      <div>
+        <DateItem date={compareDates(key)}/>
+        {transactions[key].map(transaction => {
+          if (transaction.transactionAmount < 20) {
+           return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+         }})}
+      </div>
+    )
+  });
 
   const all = Object.keys(transactions).map(function(key) {
     return(
@@ -83,35 +110,40 @@ function Sheet() {
         <div className="layout">
           <Grid container spacing={2} alignItems="center" justifyContent="center">
             <Grid item xs={6} md={8}>
-              <fds-button-toggle-group>
-                <fds-button-toggle label="All"></fds-button-toggle>
-                <fds-button-toggle label="Income"></fds-button-toggle>
-                <fds-button-toggle label="Expenses"></fds-button-toggle>
+              <fds-button-toggle-group id="test">
+                <fds-button-toggle label="All" className={`tab ${checkActive(1, "active")}`}
+          onClick={() => handleClick(1)}></fds-button-toggle>
+                <fds-button-toggle label="Income" className={`tab ${checkActive(2, "active")}`}
+          onClick={() => handleClick(2)}></fds-button-toggle>
+                <fds-button-toggle label="Expenses" className={`tab ${checkActive(3, "active")}`}
+          onClick={() => handleClick(3)}></fds-button-toggle>
               </fds-button-toggle-group>
             </Grid>
             <Grid item xs={6} md={4}>
               <fds-search-input></fds-search-input>
             </Grid>
             <Grid item xs={6} md={12}>
-              {transactions.length == 0 && (
+            {transactions.length == 0 && (
                 <div className="progress">
-                  <div className="parent">
-                    <div className="progress-bar">
-                      <div>
-                        <CircularProgress className="progress-bar-icon"/>
-                      </div>
-                    </div>
-                    <div className="progress-bar">
-                      <div className="progress-bar-text">
-                        <span>Loading...</span>
-                      </div>
+                  <div className="progress-bar">
+                      <CircularProgress className="progress-bar-icon"/>
+                  </div>
+                  <div className="progress-bar">
+                    <div className="progress-bar-text">
+                      <span>Loading...</span>
                     </div>
                   </div>
                 </div>
                 )}
-              <div className="transaction-list">
-                {all}
-              </div>
+                <div className={`transaction-list ${checkActive(1, "active")}`}>
+                  {all}
+                </div>
+                <div className={`transaction-list ${checkActive(2, "active")}`}>
+                  {income}
+                </div>
+                <div className={`transaction-list ${checkActive(3, "active")}`}>
+                  {expense}
+                </div>
             </Grid>
           </Grid>
         </div>

@@ -6,8 +6,8 @@ export function Chart() {
 
   const pieCharts = document.querySelectorAll('#pieChart');
         pieCharts.forEach((pieChart) => {
-        pieChart.data = [44, 55, 13, 43, 22]
-        pieChart.labels = ['Apple', 'Mango', 'Orange', 'Watermelon', 'Wiki']})
+        pieChart.data = [44, 55, 13, 43]
+        pieChart.labels = ['Groceries', 'Pharmacy', 'Subscription', 'Tansfer']})
 
   return (
     <div className="chart">

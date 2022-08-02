@@ -4,7 +4,9 @@ import { MoreVert } from '@mui/icons-material';
 
 
 export function Account({
-    title
+    title,
+    balance,
+    id
 }
 ) {
 
@@ -23,13 +25,13 @@ export function Account({
             <div className="account-title">
                 <span>{title}</span>
                 <div className="account-balance">
-                    <span>$ 10,000.00</span> 
+                    <span>$ {balance}</span> 
                 </div>
             </div> 
         </div>
          <div className="divider"></div>
          <div className="account-number">
-            <span>DE 800 8000 80000 800</span>
+            <span>{id}</span>
          </div>
       </div>
     </div>

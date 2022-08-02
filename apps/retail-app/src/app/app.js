@@ -9,13 +9,56 @@ import '@finastra/logo';
 import '@material/mwc-list';
 import '@finastra/logo';
 import { Grid } from '@mui/material';
+import { useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import Sheet from '../transaction-component/transaction-widget';
 import QuickTransfer from '../quicktransfer-component/quick-transfer-widget';
 import MyAdvisor from '../myadvisor-component/myadvisor-widget';
 import Account from '../account-component/account-component';
 import Chart from '../chart-component/chart-component';
+import Carousel from '../carousel-component/carousel-component';
 
 export function App() {
+
+  const serverUri = 'http://localhost:3000';
+  const serviceId1 = 'CONSUMER_PROFILE';
+  const serviceId2 = 'ACCOUNT_INFORMATION_US';
+  const target1 = `/profile`;
+  const target2 = `/accounts/extended`;
+
+  let [firstName, setFirstName] = useState("");
+  let [email, setEmail] = useState("");
+  let [fullName, setFullName] = useState("");
+  let [accounts, setAccounts] = useState([]);
+
+  const getProfile = useCallback(async () => {
+    try {
+      const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId1}&target=${target1}`);
+      const data = await response.json();
+      setFirstName(data.firstName);
+      setFullName(data.firstName +" " + data.lastName);
+      setEmail(data.emails[0].address);
+    }
+    catch (e) {
+      console.log(e)
+    }
+})
+
+const getAccounts = useCallback(async () => {
+  try {
+    const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId2}&target=${target2}`);
+    const data = await response.json();
+    setAccounts(data);
+  }
+  catch (e) {
+    console.log(e)
+  }
+})
+
+  useEffect(() => {
+    getProfile();
+    getAccounts();
+  }, [])
 
   return (
     <div className="App">
@@ -51,8 +94,8 @@ export function App() {
           <mwc-icon-button icon="search" slot="actions"></mwc-icon-button>
           <mwc-icon-button icon="notifications_none" slot="actions"></mwc-icon-button>
           <mwc-icon-button icon="help_outline" slot="actions"></mwc-icon-button>
-          <fds-user-profile slot="actions" username="Raya Hristova">
-          <div slot="userInfo">raya.hristova@finastra.com</div>
+          <fds-user-profile slot="actions" username={fullName}>
+          <div slot="userInfo">{email}</div>
           <div slot="actions">
             <fds-button fullwidth="" label="Logout" icon="logout"></fds-button>
             <fds-button text="" fullwidth="" label="View profile"></fds-button>
@@ -68,20 +111,19 @@ export function App() {
             <div className="app-title">
               <span>Retail app</span>
               <div className="welcome-msg">
-                <span> Welcome Back, ...</span>
+                <span> Welcome Back, {firstName}</span>
               </div>
             </div>
           </div>
           <div className="cards">
-            <div className="card">
-              <Account title="My Account"/>
-            </div>
-            <div className="card">
-              <Account title="Savings"/>
-            </div>
-            <div className="card">
-              <Account title="Loans"/>
-            </div>
+            <Carousel show={3}>
+              {accounts.map(account => {
+                return(
+                <div className="card">
+                  <Account title={account.nickname} balance={account.balances[0].amount} id={account.accountNumber}/>
+                </div>)
+              })}
+            </Carousel>
           </div>
         </div>
         <div className="content">
