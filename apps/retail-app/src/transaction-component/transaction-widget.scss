@@ -66,10 +66,12 @@ body {
     ::-webkit-scrollbar {
         width: 10px;
         height: 10px;
+        
     }
     
     ::-webkit-scrollbar-thumb {
         background: var(--fds-surface-selected);
+        border-radius: 4px;
     }
     
     ::-webkit-scrollbar-track {
@@ -78,15 +80,7 @@ body {
     
 
     fds-button-toggle-group{
-        --fds-button-toggle-min-width: 10px;
-        --fds-button-toggle-height: 24px;
-        --fds-button-toggle-width: 80px;
-    }
-
-    fds-button-toggle{
-        --fds-button-toggle-min-width: 10px;
-        --fds-button-toggle-height: 24px;
-        --fds-button-toggle-width: 80px;
+        width: 80%;
     }
 }
 

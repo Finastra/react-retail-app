@@ -27,6 +27,8 @@ body {
     }
 
     .sendto{
+        padding-top: 24px;
+        padding-bottom: 24px;
         width: 100%;
         height: 100%;
         position: relative;
@@ -44,33 +46,8 @@ body {
     }
 
     .dropdown{
-        width: 100%;
-        position: absolute;
-        z-index: 1000;
-        border-radius: 2px;
-        background-color: var(--fds-surface);
-        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
         max-height: 150px;
         overflow: auto;
-    }
-
-    .dropdown-item{
-        padding: 5px;
-        cursor: pointer;
-        font: var(--fds-body-3);
-    }
-
-
-    .dropdown-item-selected{
-        padding: 5px;
-        cursor: pointer;
-        font: var(--fds-body-3);
-        color: var(--fds-surface);
-        background-color: var(--fds-primary);
-    }
-
-    .dropdown-item:hover{
-        background-color: var(--fds-surface-selected);
     }
 
     ::-webkit-scrollbar {
@@ -80,6 +57,7 @@ body {
     
     ::-webkit-scrollbar-thumb {
         background: var(--fds-surface-selected);
+        border-radius: 4px;
     }
     
     ::-webkit-scrollbar-track {

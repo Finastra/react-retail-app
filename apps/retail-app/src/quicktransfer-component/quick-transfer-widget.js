@@ -1,17 +1,20 @@
 import './quick-transfer-widget.scss';
 import '@finastra/button';
 import '@finastra/textfield';
-import '@finastra/select';
 import '@finastra/dialog';
+import '@finastra/autocomplete';
+import { Snackbar, Alert } from '@mui/material';
 import { useEffect, useState, useCallback } from 'react';
 
 function QuickTransfer() {
 
-  const [showMenu, setShowMenu] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(null);
   const [options, setOptions] = useState([]);
 
+  const optionss = [{"payeeName": "Ejre"}, {"payeeName": "wewt"}]
+
   let [openDialog, setOpenDialog] = useState(false);
+  let [payee, setPayee] = useState(null);
+  let [amount, setAmount] = useState(null);
 
   const serverUri = 'http://localhost:3000';
   const serviceId = 'PERSON_TO_PERSON';
@@ -28,54 +31,34 @@ function QuickTransfer() {
     }
   })
 
+  function makeTransfer() {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'React POST Request Example' })
+    };
+    fetch('https://reqres.in/api/posts', requestOptions)
+        .then(response => response.json())
+        .then(data => this.setState({ postId: data.id }));
+}
+
   useEffect(() => {
     getPayees();
   }, [])
 
-  useEffect(() => {
-    const handler = () => setShowMenu(false);
-    
-    window.addEventListener("click", handler);
-    return () => {
-      window.removeEventListener("click", handler);
-    };
-  })
-
-
-  const handleInputClick = (e) => {
-    e.stopPropagation();
-    setShowMenu(!showMenu);
-  };
-
-  const getDisplay = () => {
-    if (selectedValue) {
-      return selectedValue.payeeName;
-    }
-  }
-
-  const renderSelected = (option) => {
-    if (isSelected(option)){
-      return "dropdown-item-selected";
-    }
-    return "dropdown-item";
-  }
-
-  const onItemClick = (option) => {
-    setSelectedValue(option);
-  };
-
-  const isSelected = (option) => {
-    if (!selectedValue) {
-      return false;
-    }
-
-    return selectedValue.id === option.id;
-  }
-
   const openDialogButton = () => {
-    console.log("Hello");
-    setOpenDialog(true);
+    if (payee === null || amount === null){
+      window.alert("Please enter the correct fields!")
+    }
+    else{
+      setOpenDialog(true);
+    }
   }
+
+  const itemClick = () => {
+    setPayee("dfs");
+  }
+
 
   return (
     <div className="quick-transfer">
@@ -85,34 +68,32 @@ function QuickTransfer() {
         </div>
         <div className="quick-transfer-inputs">
             <div className="sendto">
-              <fds-textfield label="Send to" icon="person" value={getDisplay()} showactionbutton="true" onClick={handleInputClick} labelinside="true">
-                <mwc-icon-button  slot="actionButton" icon="arrow_drop_down" ></mwc-icon-button>
-              </fds-textfield>
-
-              {showMenu && (
-              <div className="dropdown">
-                {options.map((option) => (
-                  <div key={option.id} 
-                      className={renderSelected(option)}
-                      onClick={() => onItemClick(option)}>
-                    {option.payeeName}
-                  </div>
-                ))}
-              </div>)}
+              <fds-autocomplete icon="person" placeholder="Choose a person..." showClearButton={true}>
+                {optionss.map((option) => 
+                  <mwc-list-item value={option.payeeName} onClick={itemClick}>{option.payeeName}</mwc-list-item>
+                  )}
+              </fds-autocomplete>
 
             </div>
             <div className="amount">
-              <fds-textfield icon="money" icontrailing="dollar" label="Amount" labelinside="true"></fds-textfield>
+              <fds-textfield onInput={e => setAmount(e.target.value)} icon="money" label="Amount" labelinside="true" validationmessage="Should be in the format x.x" pattern="^[0-9]*[.][0-9]*$"></fds-textfield>
             </div>
             <div className="button">
               <fds-button label="Send" icon="check" onClick={openDialogButton}>
-                <fds-dialog open={openDialog}>
-                  <span> Are you sure you want to send to ... ....</span>
-                </fds-dialog>
               </fds-button>
             </div>
         </div>
       </div>
+      <fds-dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+        <div className="dialog-content">
+          <div className="dialog-title">
+            <span>Confirmation</span>
+          </div>
+          <div className="dialog-msg">
+            <span>Sending money to {payee} and {amount}</span> 
+          </div>
+        </div>
+      </fds-dialog>
     </div>
   
   );

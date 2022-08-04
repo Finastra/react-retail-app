@@ -9,21 +9,22 @@ body {
         height: 100%;
         display: flex;
         flex-direction: column;
-        overflow-x: hidden;
+        overflow: hidden;
     }
     
     .carousel-wrapper {
         display: flex;
-        width: 100%;
+        width: 1140px;
         position: relative;
+        padding-top: 12px;
+        padding-left: 48px;
+        padding-bottom: 12px;
+        
     }
     
     .carousel-content-wrapper {
         width: 100%;
         height: 100%;
-        padding-top: 12px;
-        padding-left: 48px;
-        padding-bottom: 12px;
     }
     
     .carousel-content {
@@ -35,7 +36,7 @@ body {
     
 
     .carousel-content.show-3 > * {
-        width: 33.3%;
+        width: 380px;
     }
     
 
@@ -46,7 +47,6 @@ body {
     .carousel-content > * {
         width: 100%;
         flex-shrink: 0;
-        flex-grow: 1;
     }
     
     .carousel-buttons{

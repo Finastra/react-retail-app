@@ -21,7 +21,8 @@ function Sheet() {
   const checkActive = (index, className) => activeIndex === index ? className : "";
 
   let [transactions, setTransactions] = useState([]);
-
+  let [desc, setDesc] = useState("");
+   
   const getTransactions = useCallback(async () => {
     try {
       const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId}&target=${target}`);
@@ -96,6 +97,23 @@ function Sheet() {
     }
   }
 
+  const filterTransactions = (e) => {
+    const keyword = e.target.value;
+
+    console.log(keyword);
+    console.log(transactions)
+
+    if (keyword !== '') {
+      const results = transactions.filter((transaction) => {
+        return transaction.description.toLowerCase().startsWith(keyword.toLowerCase());
+      });
+      setTransactions(results);
+    } else {
+      setTransactions(transactions);
+    }
+    setDesc(keyword);
+  }
+
   useEffect(() => {
     getTransactions();
   }, [])
@@ -120,7 +138,7 @@ function Sheet() {
               </fds-button-toggle-group>
             </Grid>
             <Grid item xs={6} md={4}>
-              <fds-search-input></fds-search-input>
+              <fds-search-input value={desc} onInput={filterTransactions}></fds-search-input>
             </Grid>
             <Grid item xs={6} md={12}>
             {transactions.length == 0 && (
