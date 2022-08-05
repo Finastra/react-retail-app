@@ -50,10 +50,12 @@
     "npm": "^8.14.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "nx": "14.4.2",
     "react-router-dom": "6.3.0",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
     "rxjs": "^7.0.0",
+    "@nrwl/cli": "14.4.2",
     "ts-morph": "^15.1.0",
     "tslib": "^2.3.0"
   },
