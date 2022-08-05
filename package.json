@@ -4,11 +4,11 @@
   "license": "MIT",
   "scripts": {
     "start": "npm nx serve",
-    "start:server": "npm nx serve server --port 9229",
-    "build": "npm nx build",
-    "test": "npm nx test",
-    "build:client": "npm nx build retail-app",
-    "build:api": "npm nx serve api"
+    "start:server": "nx serve server --port 9229",
+    "build": "nx build",
+    "test": "nx test",
+    "build:client": "nx build retail-app",
+    "build:api": "nx serve api"
   },
   "private": true,
   "dependencies": {
