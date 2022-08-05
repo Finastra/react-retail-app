@@ -3,12 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npm nx serve",
+    "start": "node dist/apps/api/main.js",
     "start:server": "nx serve server --port 9229",
     "build": "nx build",
-    "test": "nx test",
-    "build:client": "nx build retail-app",
-    "build:api": "nx serve api"
+    "test": "nx test"
   },
   "private": true,
   "dependencies": {
