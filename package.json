@@ -6,7 +6,9 @@
     "start": "nx serve",
     "start:server": "nx serve server --port 9229",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "build:client": "nx build retail-app",
+    "build:api": "nx serve api"
   },
   "private": true,
   "dependencies": {
