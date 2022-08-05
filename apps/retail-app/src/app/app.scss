@@ -6,7 +6,7 @@ body {
     background-color: var(--fds-background);
     margin: 0;
     padding: 0;
-    max-width: 1500px;
+    max-width: 100vw;
     list-style-type: none;
     @include fds.use-light-theme();
     .sb-show-main.sb-main-centered {
@@ -49,10 +49,11 @@ body {
       }
 
       .header {
-        background-image: url("../assets/Background.png");
+        background: url("../assets/Background.png") no-repeat;
         height: 350px;
-        width: 100%;
+        background-size: cover;
         background-color: var(--fds-background);
+        width: 100%;
       }
 
       .header-title{

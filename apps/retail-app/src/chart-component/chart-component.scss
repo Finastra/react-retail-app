@@ -16,9 +16,9 @@ body {
   }
 
   .donut-chart{
-    height: 300px;
-    width: 100%;
-    margin: 14px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px;
   }
 
   .chart-title{

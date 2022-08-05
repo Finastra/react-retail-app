@@ -21,6 +21,7 @@ function Sheet() {
   const checkActive = (index, className) => activeIndex === index ? className : "";
 
   let [transactions, setTransactions] = useState([]);
+  let [foundTransactions, setFoundTransactions] = useState([]);
   let [desc, setDesc] = useState("");
    
   const getTransactions = useCallback(async () => {
@@ -28,54 +29,59 @@ function Sheet() {
       const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId}&target=${target}`);
       const data = await response.json();
       const filterByDate = data.reduce((groups, transactions) => {
-      const date = transactions.transactionDate;
-        if (!groups[date]) {
-          groups[date] = [];
-        }
-        groups[date].push(transactions);
-        return groups;
-      }, {});
+        const date = transactions.transactionDate;
+          if (!groups[date]) {
+            groups[date] = [];
+          }
+          groups[date].push(transactions);
+          return groups;
+        }, {});
       setTransactions(filterByDate);
+      setFoundTransactions(filterByDate);
     }
     catch (e) {
       console.log(e)
     }
   })
 
-  const expense = Object.keys(transactions).map(function(key) {
-    return(
-      <div>
-        <DateItem date={compareDates(key)}/>
-        {transactions[key].map(transaction => {
-          if (transaction.transactionAmount > 20) {
-           return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
-         }})}
-      </div>
-    )
-  });
+  
+  const expense = Object.keys(foundTransactions).map(function(key) {
+    if (foundTransactions[key].length > 0) {
+      return(
+        <div>
+          <DateItem date={compareDates(key)}/>
+          {foundTransactions[key].map(transaction => {
+            if (transaction.transactionAmount > 20) {
+            return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+          }})}
+        </div>
+      )
+  }});
 
-  const income = Object.keys(transactions).map(function(key) {
-    return(
-      <div>
-        <DateItem date={compareDates(key)}/>
-        {transactions[key].map(transaction => {
-          if (transaction.transactionAmount < 20) {
-           return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
-         }})}
-      </div>
-    )
-  });
+  const income = Object.keys(foundTransactions).map(function(key) {
+    if (foundTransactions[key].length > 0) {
+      return(
+        <div>
+          <DateItem date={compareDates(key)}/>
+          {foundTransactions[key].map(transaction => {
+            if (transaction.transactionAmount < 20) {
+            return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+          }})}
+        </div>
+      )
+  }});
 
-  const all = Object.keys(transactions).map(function(key) {
-    return(
-      <div>
-        <DateItem date={compareDates(key)}/>
-        {transactions[key].map(transaction => 
-            <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
-          )}
-      </div>
-    )
-  });
+  const all = Object.keys(foundTransactions).map(function(key) {
+    if (foundTransactions[key].length > 0){
+      return(
+        <div>
+          <DateItem date={compareDates(key)}/>
+          {foundTransactions[key].map(transaction => 
+              <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+            )}
+        </div>
+      )
+}});
 
 
   function compareDates(date){
@@ -100,16 +106,17 @@ function Sheet() {
   const filterTransactions = (e) => {
     const keyword = e.target.value;
 
-    console.log(keyword);
-    console.log(transactions)
-
-    if (keyword !== '') {
-      const results = transactions.filter((transaction) => {
-        return transaction.description.toLowerCase().startsWith(keyword.toLowerCase());
-      });
-      setTransactions(results);
+    if (keyword != '') {
+      const results = {}
+      Object.keys(transactions).map(function(key) {
+        results[key] = transactions[key].filter(transaction => {
+          return transaction.description.toLowerCase().startsWith(keyword.toLowerCase());
+        })
+      }
+    );
+      setFoundTransactions(results);
     } else {
-      setTransactions(transactions);
+      setFoundTransactions(transactions);
     }
     setDesc(keyword);
   }
@@ -127,7 +134,7 @@ function Sheet() {
         </div>
         <div className="layout">
           <Grid container spacing={2} alignItems="center" justifyContent="center">
-            <Grid item xs={6} md={8}>
+            <Grid item xs={6} md={8} className="button-toggle">
               <fds-button-toggle-group id="test">
                 <fds-button-toggle label="All" className={`tab ${checkActive(1, "active")}`}
           onClick={() => handleClick(1)}></fds-button-toggle>
@@ -137,7 +144,7 @@ function Sheet() {
           onClick={() => handleClick(3)}></fds-button-toggle>
               </fds-button-toggle-group>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={6} md={4} className="search-input">
               <fds-search-input value={desc} onInput={filterTransactions}></fds-search-input>
             </Grid>
             <Grid item xs={6} md={12}>

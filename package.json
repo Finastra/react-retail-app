@@ -29,6 +29,7 @@
     "@finastra/search-input": "^0.0.36",
     "@finastra/select": "^0.0.36",
     "@finastra/sidenav": "^0.0.36",
+    "@finastra/textarea": "^0.0.36",
     "@finastra/textfield": "^0.0.36",
     "@finastra/user-profile": "^0.0.36",
     "@golevelup/nestjs-testing": "^0.1.2",

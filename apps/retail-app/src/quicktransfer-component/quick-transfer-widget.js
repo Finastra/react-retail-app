@@ -3,26 +3,39 @@ import '@finastra/button';
 import '@finastra/textfield';
 import '@finastra/dialog';
 import '@finastra/autocomplete';
-import { Snackbar, Alert } from '@mui/material';
+import '@finastra/textarea';
+import '@finastra/select';
+import { Snackbar, Alert, fabClasses } from '@mui/material';
 import { useEffect, useState, useCallback } from 'react';
+import { RepeatOneSharp } from '@mui/icons-material';
 
 function QuickTransfer() {
+
+  const serverUri = 'http://localhost:3000';
+  const serviceId1 = 'PERSON_TO_PERSON';
+  const serviceId2 = 'ACCOUNT_INFORMATION_US';
+  const target1 = `/external-p2p-payments/payees`;
+  const target2 = `/accounts/extended`;
+  const target3 = `/external-p2p-payments`;
 
   const [options, setOptions] = useState([]);
 
   const optionss = [{"payeeName": "Ejre"}, {"payeeName": "wewt"}]
+  const optionsss = [{"nickname": "sfs"}, {"nickname": "dfsd"}]
 
-  let [openDialog, setOpenDialog] = useState(false);
+  let [openDialog, setOpenDialog] = useState(null);
+  let [openSnackbarError, setOpenSnackbarError] = useState(false);
+  let [openSnackbarSuccess, setOpenSnackbarSuccess] = useState(false);
   let [payee, setPayee] = useState(null);
   let [amount, setAmount] = useState(null);
-
-  const serverUri = 'http://localhost:3000';
-  const serviceId = 'PERSON_TO_PERSON';
-  const target = `/external-p2p-payments/payees`;
+  let [accounts, setAccounts] = useState([]);
+  let [account, setAccount] = useState("");
+  let [memo, setMemo] = useState("");
+  let [response, setResponse] = useState(null);
 
   const getPayees = useCallback(async () => {
     try {
-      const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId}&target=${target}`);
+      const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId1}&target=${target1}`);
       const data = await response.json();
       setOptions(data);
     }
@@ -31,32 +44,160 @@ function QuickTransfer() {
     }
   })
 
-  function makeTransfer() {
+  const getAccounts = useCallback(async () => {
+    try {
+      const response = await fetch(`${serverUri}/proxy?serviceId=${serviceId2}&target=${target2}`);
+      const data = await response.json();
+      setAccounts(data);
+    }
+    catch (e) {
+      console.log(e)
+    }
+  })
+  
+  async function makeTransfer() {
+    let data = {};
+
+    const current = new Date();
+    let date = ""
+    if (current.getMonth()+1 < 10 && current.getDate() < 10){
+       date = `${current.getFullYear()}-0${current.getMonth()+1}-0${current.getDate()}`;
+    }
+    else if (current.getMonth()+1 < 10 && current.getDate() >= 10){
+      date = `${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`;
+    }
+    else if (current.getMonth()+1 >= 10 && current.getDate() < 10){
+      date = `${current.getFullYear()}-${current.getMonth()+1}-0${current.getDate()}`;
+    }
+    else{
+      date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    }
+
+    if (payee.payeeType == "Mobile"){
+       data =  {
+        accountId: account,
+        payee: {
+          id: payee.id,
+          payeeName: payee.payeeName,
+          payeePhoneNumber: payee.payeePhoneNumber,
+          payeeType: payee.payeeType
+        },
+        amount: amount,
+        status: "",
+        memo: memo,
+        paymentDirection: "send",
+        paymentDate: date, 
+        fee: 1,
+        securityQuestion: "1",
+        securityAnswer: "1"    
+    }
+   }
+   else {
+     data =  {
+      accountId: account,
+      payee: {
+        id: payee.id,
+        payeeName: payee.payeeName,
+        payeeEmail: payee.payeeEmail,
+        payeeType: payee.payeeType
+      },
+      amount: amount,
+      status: "",
+      memo: memo,
+      paymentDirection: "send",
+      paymentDate: date, 
+      fee: 1,
+      securityQuestion: "1",
+      securityAnswer: "1"    
+  }
+   }
+
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
+        body: JSON.stringify(data)
     };
-    fetch('https://reqres.in/api/posts', requestOptions)
+
+    let response = null;
+
+    await fetch(`${serverUri}/proxy?serviceId=${serviceId1}&target=${target3}`, requestOptions)
         .then(response => response.json())
-        .then(data => this.setState({ postId: data.id }));
+        .then(data => response=data);
+
+    return new Promise((resolve) => {
+          resolve(response);
+        });
 }
 
   useEffect(() => {
+    getAccounts();
     getPayees();
   }, [])
 
   const openDialogButton = () => {
     if (payee === null || amount === null){
-      window.alert("Please enter the correct fields!")
+      window.alert("Please enter the given fields correctly!")
     }
     else{
       setOpenDialog(true);
     }
   }
 
-  const itemClick = () => {
-    setPayee("dfs");
+  async function handlePayment (){
+    if (account !== null){
+      let response = await makeTransfer();
+      console.log(response);
+      setOpenDialog(null);
+      if (response.status){
+        setResponse(response.status);
+        setOpenSnackbarSuccess(true);
+
+      }
+      else{
+        setResponse(response.message);
+        setOpenSnackbarError(true);
+      }
+  
+    }
+    else{
+      window.alert("Please choose one of your accounts!");
+    }
+  }
+
+  const handleClosePayment = () => {
+    setOpenDialog(null);
+  }
+
+  const handleAmount = (e) => {
+    if (e.target.validity.valid){
+      if (e.target.value !== ""){
+        setAmount(parseFloat(e.target.value));
+      }
+    }
+    else{
+      setAmount(null);
+    }
+  }
+
+  const handleClose = () => {
+    setOpenSnackbarError(false);
+    setOpenSnackbarSuccess(false);
+  }
+
+  const handlePayee = () => {
+    setPayee(null);
+  }
+
+  const handleMemo = (value) => {
+    setMemo(value);
+  }
+
+  const itemClickPayee = (value) => {
+    setPayee(value);
+  }
+
+  const itemClickAcc = (value) => {
+    setAccount(value);
   }
 
 
@@ -68,15 +209,14 @@ function QuickTransfer() {
         </div>
         <div className="quick-transfer-inputs">
             <div className="sendto">
-              <fds-autocomplete icon="person" placeholder="Choose a person..." showClearButton={true}>
-                {optionss.map((option) => 
-                  <mwc-list-item value={option.payeeName} onClick={itemClick}>{option.payeeName}</mwc-list-item>
+              <fds-autocomplete onInput={e => handlePayee(e)} icon="person" placeholder="Choose a person...">
+                {options.map((option) => 
+                  <mwc-list-item value={option.payeeName} onClick={e => itemClickPayee(option)}>{option.payeeName}</mwc-list-item>
                   )}
               </fds-autocomplete>
-
             </div>
             <div className="amount">
-              <fds-textfield onInput={e => setAmount(e.target.value)} icon="money" label="Amount" labelinside="true" validationmessage="Should be in the format x.x" pattern="^[0-9]*[.][0-9]*$"></fds-textfield>
+              <fds-textfield onInput={e => handleAmount(e)} icon="money" label="Amount" labelinside="true" validationmessage="Should be in the format x.x" pattern="^[0-9]*[.][0-9]*$"></fds-textfield>
             </div>
             <div className="button">
               <fds-button label="Send" icon="check" onClick={openDialogButton}>
@@ -84,16 +224,32 @@ function QuickTransfer() {
             </div>
         </div>
       </div>
-      <fds-dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-        <div className="dialog-content">
-          <div className="dialog-title">
-            <span>Confirmation</span>
-          </div>
-          <div className="dialog-msg">
-            <span>Sending money to {payee} and {amount}</span> 
-          </div>
-        </div>
+      <fds-dialog open={openDialog} heading="Payment Confirmation" scrimClickAction="">
+        <p> Payee: <strong>{payee ? payee.payeeName : null}</strong> </p>
+        <p> Amount: <strong>{amount} $</strong></p>
+        <fds-select outlined="" label="Account..." icon="payments">
+          {accounts.map((account) => 
+            <mwc-list-item value={account.accountId} onClick={e => itemClickAcc(e.target.value)}>{account.nickname}</mwc-list-item>
+          )}
+        </fds-select>
+        <fds-textarea onInput={e => handleMemo(e.target.value)}label="Add a memo" charcounter="true"  maxLength={100}></fds-textarea>
+        <fds-button secondary="" label="Confirm" slot="primaryAction" onClick={handlePayment}></fds-button>
+        <fds-text-button label="Cancel" slot="secondaryAction" onClick={handleClosePayment}></fds-text-button>
       </fds-dialog>
+      <Snackbar
+        open={openSnackbarError}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert severity="error">{response}</Alert>
+      </Snackbar>
+      <Snackbar
+        open={openSnackbarSuccess}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert severity="success">{response}</Alert>
+      </Snackbar>
     </div>
   
   );
