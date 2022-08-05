@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npm start",
+    "start": "nx serve api",
     "start:server": "nx serve server --port 9229",
     "build": "nx build",
     "test": "nx test"
