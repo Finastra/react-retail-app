@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "yarn nx serve",
-    "start:server": "yarn nx serve server --port 9229",
-    "build": "yarn nx build",
-    "test": "yarn nx test",
-    "build:client": "yarn nx build retail-app",
-    "build:api": "yarn nx serve api"
+    "start": "npm nx serve",
+    "start:server": "npm nx serve server --port 9229",
+    "build": "npm nx build",
+    "test": "npm nx test",
+    "build:client": "npm nx build retail-app",
+    "build:api": "npm nx serve api"
   },
   "private": true,
   "dependencies": {
