@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/apps/api/main",
+    "start": "node dist/apps/api/main",
     "start:prod": "node dist/apps/api/main.js",
     "start:server": "nx serve server --port 9229",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "heroku-postbuild": "npm run build"
   },
   "private": true,
   "dependencies": {
