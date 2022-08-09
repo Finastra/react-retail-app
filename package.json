@@ -6,9 +6,7 @@
     "start": "node dist/apps/api/main",
     "start:prod": "node dist/apps/api/main.js",
     "start:server": "nx serve server --port 9229",
-    "build": "nx build",
-    "test": "nx test",
-    "heroku-postbuild": "npm run build"
+    "test": "nx test"
   },
   "private": true,
   "dependencies": {
