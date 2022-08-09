@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "yarn nx serve api",
+    "start": "npx nx serve api",
     "start:prod": "node dist/apps/api/main.js",
     "start:server": "nx serve server --port 9229",
     "build": "nx build",
