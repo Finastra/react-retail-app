@@ -3,12 +3,14 @@ import './app.scss';
 import '@finastra/app-bar';
 import '@finastra/button';
 import '@finastra/user-profile';
+import '@finastra/dialog';
 import '@material/mwc-icon-button';
 import '@finastra/sidenav';
 import '@finastra/logo';
 import '@material/mwc-list';
 import '@finastra/logo';
-import { Grid } from '@mui/material';
+import '@finastra/checkbox';
+import { Grid, Box, Paper } from '@mui/material';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
 import Sheet from '../transaction-component/transaction-widget';
@@ -23,13 +25,16 @@ export function App() {
   const serverUri = 'http://localhost:3000';
   const serviceId1 = 'CONSUMER_PROFILE';
   const serviceId2 = 'ACCOUNT_INFORMATION_US';
+  
   const target1 = `/profile`;
   const target2 = `/accounts/extended`;
+  
 
   let [firstName, setFirstName] = useState("");
   let [email, setEmail] = useState("");
   let [fullName, setFullName] = useState("");
   let [accounts, setAccounts] = useState([]);
+  
 
   const getProfile = useCallback(async () => {
     try {
@@ -54,6 +59,8 @@ const getAccounts = useCallback(async () => {
     console.log(e)
   }
 })
+
+
 
   useEffect(() => {
     getProfile();
@@ -123,16 +130,46 @@ const getAccounts = useCallback(async () => {
                   <Account title={account.nickname} balance={account.balances[0].amount} id={account.accountNumber}/>
                 </div>)
               })}
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
+              <div className="cards">
+                <Account/>
+              </div>
             </Carousel>
           </div>
         </div>
         <div className="content">
           <div className="main-content">
             <Grid container spacing={2}>
-              <Grid item xs={6} md={8}>
+              <Grid item xs={12} md={8}>
                   <Sheet/>
               </Grid>
-              <Grid item xs={6} md={4}>
+              <Grid item xs={12} md={4}>
                 <div className="side-content">
                   <QuickTransfer/>
                 </div> 

@@ -16,8 +16,15 @@ body {
         border-bottom: 1px solid;
         border-color: rgb(217, 218, 217);
     }
+
+    .transaction-last{
+        border-color: rgb(217, 218, 217);
+    }
+
     .transaction-item{
         padding: 20px;
+        display: flex;
+        flex-direction: row;
     }
 
     .material-icons{
@@ -28,22 +35,18 @@ body {
     .transaction-name{
         width: 90%;
         height: 100%;
-        padding-left: 50px;
+        padding-left: 12px;
     }
 
     .transaction-title{
         font: var(--fds-subtitle-2);
+        display: flex;
+        justify-content: space-between;
     }
 
     .transaction-subtitle{
         font: var(--fds-body-3);
-    }
-
-    .transaction-amount{
-        float: right;
-        padding-top: 4px;
-    }
-    
+    }    
 }
 
 html,
@@ -58,3 +61,20 @@ body {
     @include fds.use-dark-theme();
   }
 }
+
+
+@media only screen and (max-width: 415px) {
+    body{
+        .transaction-title{
+            font: var(--fds-subtitle-3);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .transaction-subtitle{
+            font: var(--fds-body-3);
+        } 
+    }
+    
+}
+  

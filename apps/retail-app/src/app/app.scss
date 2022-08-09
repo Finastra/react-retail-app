@@ -6,7 +6,6 @@ body {
     background-color: var(--fds-background);
     margin: 0;
     padding: 0;
-    max-width: 100vw;
     list-style-type: none;
     @include fds.use-light-theme();
     .sb-show-main.sb-main-centered {
@@ -84,13 +83,21 @@ body {
       }
 
       .main-content{
-        padding: 10%;
+        display: flex;
+        justify-content: center;
+        padding-right: 10%;
+        padding-left: 10%;
         padding-top: 5%;
         background-color: var(--fds-background);
       }
 
       .side-content{
         margin-bottom: 10px;
+      }
+
+      .agreement{
+        display: flex;
+        align-items: center;
       }
 
 }
@@ -107,3 +114,5 @@ body {
     @include fds.use-dark-theme();
   }
 }
+
+

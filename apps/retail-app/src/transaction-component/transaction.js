@@ -5,10 +5,13 @@ function Transaction({
     title,
     amount,
     accNumber,
+    last
 }) {
 
+  const checkActive = (last, className) => last ? className : "";
+
   return (
-    <div className="transaction"> 
+    <div className={`transaction${last ? "-last" : ""}`}> 
         <div className="transaction-item">
           <div className="icon">
             <div className="icon-pic">
@@ -20,9 +23,7 @@ function Transaction({
           <div className="transaction-name">
             <div className="transaction-title">
               <span> {title} </span>
-              <div className="transaction-amount">
-                <span> $ {amount} </span>
-              </div>      
+              <span> $ {amount} </span>    
             </div>
             <div className="transaction-subtitle">
               <span> {accNumber} </span>

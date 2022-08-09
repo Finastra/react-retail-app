@@ -5,25 +5,26 @@ import '@finastra/dialog';
 import '@finastra/autocomplete';
 import '@finastra/textarea';
 import '@finastra/select';
-import { Snackbar, Alert, fabClasses } from '@mui/material';
+import { Snackbar, Alert } from '@mui/material';
 import { useEffect, useState, useCallback } from 'react';
-import { RepeatOneSharp } from '@mui/icons-material';
 
 function QuickTransfer() {
 
   const serverUri = 'http://localhost:3000';
   const serviceId1 = 'PERSON_TO_PERSON';
   const serviceId2 = 'ACCOUNT_INFORMATION_US';
+  const serviceId3 = 'PERSON_TO_PERSON';
+
   const target1 = `/external-p2p-payments/payees`;
   const target2 = `/accounts/extended`;
   const target3 = `/external-p2p-payments`;
+  const target4 = `/external-p2p-payments/terms-and-conditions/accept`;
 
   const [options, setOptions] = useState([]);
 
-  const optionss = [{"payeeName": "Ejre"}, {"payeeName": "wewt"}]
-  const optionsss = [{"nickname": "sfs"}, {"nickname": "dfsd"}]
-
   let [openDialog, setOpenDialog] = useState(null);
+  let [agreementState, setAgreementState] = useState(true);
+  let [disabled, setDisabled] = useState(true);
   let [openSnackbarError, setOpenSnackbarError] = useState(false);
   let [openSnackbarSuccess, setOpenSnackbarSuccess] = useState(false);
   let [payee, setPayee] = useState(null);
@@ -61,7 +62,7 @@ function QuickTransfer() {
     const current = new Date();
     let date = ""
     if (current.getMonth()+1 < 10 && current.getDate() < 10){
-       date = `${current.getFullYear()}-0${current.getMonth()+1}-0${current.getDate()}`;
+      date = `${current.getFullYear()}-0${current.getMonth()+1}-0${current.getDate()}`;
     }
     else if (current.getMonth()+1 < 10 && current.getDate() >= 10){
       date = `${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`;
@@ -131,7 +132,6 @@ function QuickTransfer() {
 
   useEffect(() => {
     getAccounts();
-    getPayees();
   }, [])
 
   const openDialogButton = () => {
@@ -146,7 +146,6 @@ function QuickTransfer() {
   async function handlePayment (){
     if (account !== null){
       let response = await makeTransfer();
-      console.log(response);
       setOpenDialog(null);
       if (response.status){
         setResponse(response.status);
@@ -177,6 +176,37 @@ function QuickTransfer() {
     else{
       setAmount(null);
     }
+  }
+
+  const checkBoxStatus = (value) => {
+    if (value){
+      setDisabled(true);
+    }
+    else {
+      setDisabled(null);
+    }
+  }
+  
+  async function Agreement() {
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    };
+
+    await fetch(`${serverUri}/proxy?serviceId=${serviceId3}&target=${target4}`, requestOptions)
+          .then(response => response.json())
+          .then(data => console.log(data));
+
+      return new Promise((resolve) => {
+            resolve(response);
+          });
+  }
+  
+  async function handleAgreement() {
+    await Agreement();
+    setAgreementState(null);
+    getPayees();
   }
 
   const handleClose = () => {
@@ -250,6 +280,14 @@ function QuickTransfer() {
       >
         <Alert severity="success">{response}</Alert>
       </Snackbar>
+      {/*<fds-dialog open={agreementState} heading="Terms and condition agreement" scrimClickAction="">
+        <p>To be able to access this app, you must first agree to the terms and conditions:</p>
+        <div className="agreement">
+          <fds-checkbox  onClick={e => checkBoxStatus(e.target.checked)}/>
+          <span> I agree to the terms and conditions </span>
+        </div>
+        <fds-button secondary="" label="Confirm" slot="primaryAction" disabled={disabled} onClick={handleAgreement}></fds-button>
+          </fds-dialog>*/}
     </div>
   
   );

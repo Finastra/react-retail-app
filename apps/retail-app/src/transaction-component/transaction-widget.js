@@ -51,7 +51,7 @@ function Sheet() {
         <div>
           <DateItem date={compareDates(key)}/>
           {foundTransactions[key].map(transaction => {
-            if (transaction.transactionAmount > 20) {
+            if (transaction.transactionAmount > 20 ) {
             return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
           }})}
         </div>
@@ -133,9 +133,9 @@ function Sheet() {
           <span className="title">Transactions</span>
         </div>
         <div className="layout">
-          <Grid container spacing={2} alignItems="center" justifyContent="center">
-            <Grid item xs={6} md={8} className="button-toggle">
-              <fds-button-toggle-group id="test">
+          <Grid container spacing={2}>
+            <Grid item xs={8} md={8} className="button-toggle">
+              <fds-button-toggle-group >
                 <fds-button-toggle label="All" className={`tab ${checkActive(1, "active")}`}
           onClick={() => handleClick(1)}></fds-button-toggle>
                 <fds-button-toggle label="Income" className={`tab ${checkActive(2, "active")}`}
@@ -144,24 +144,36 @@ function Sheet() {
           onClick={() => handleClick(3)}></fds-button-toggle>
               </fds-button-toggle-group>
             </Grid>
-            <Grid item xs={6} md={4} className="search-input">
-              <fds-search-input value={desc} onInput={filterTransactions}></fds-search-input>
+            <Grid item xs={4} md={4} >
+              <div className="search-input">
+                <fds-search-input value={desc} onInput={filterTransactions}></fds-search-input>
+              </div>
             </Grid>
-            <Grid item xs={6} md={12}>
-            {transactions.length == 0 && (
+            <Grid item xs={12} md={12}>
+            {/*transactions.length == 0 && (
                 <div className="progress">
                   <div className="progress-bar">
-                      <CircularProgress className="progress-bar-icon"/>
-                  </div>
-                  <div className="progress-bar">
+                    <CircularProgress className="progress-bar-icon"/>
                     <div className="progress-bar-text">
                       <span>Loading...</span>
                     </div>
                   </div>
                 </div>
-                )}
+            )*/}
                 <div className={`transaction-list ${checkActive(1, "active")}`}>
                   {all}
+                  <DateItem/>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23" last={true}></Transaction>
+                  <DateItem/>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23" last={true}></Transaction>
+                  <DateItem/>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
+                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23" last={true}></Transaction>
                 </div>
                 <div className={`transaction-list ${checkActive(2, "active")}`}>
                   {income}
