@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/apps/api/main.js",
-    "prestart":"node debug.js",
+    "prestart": "node debug.js",
     "start:prod": "node dist/apps/api/main.js",
     "start:server": "nx serve server --port 9229",
     "test": "nx test",
@@ -49,6 +49,7 @@
     "@nrwl/cli": "14.4.2",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "apexcharts": "^3.35.4",
+    "compression": "^1.7.4",
     "core-js": "^3.6.5",
     "express-session": "^1.17.3",
     "i": "^0.3.7",
