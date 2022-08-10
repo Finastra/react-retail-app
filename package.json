@@ -8,7 +8,7 @@
     "start:prod": "node dist/apps/api/main.js",
     "start:server": "nx serve api --port 9229",
     "test": "nx test",
-    "build": "nx build"
+    "build": "nx build api && nx build retail-app"
   },
   "private": true,
   "dependencies": {
