@@ -36,22 +36,5 @@ import { StaticMiddleware } from './setup-static';
   ],
 })
 export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-
-    consumer
-
-      .apply(StaticMiddleware)
-      .exclude(
-        { path: '/health', method: RequestMethod.ALL },
-        { path: '/login/callback', method: RequestMethod.ALL },
-        { path: '/login', method: RequestMethod.ALL }
-
-      )
-
-      .forRoutes({
-        path: '/',
-        method: RequestMethod.ALL,
-      });
-
-  }
+  
 }
