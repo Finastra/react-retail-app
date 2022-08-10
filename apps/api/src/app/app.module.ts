@@ -1,6 +1,6 @@
 import { LoggerModule } from '@finastra/nestjs-logger';
 import { ProxyModule } from '@finastra/nestjs-proxy';
-import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { OidcModule } from '@finastra/nestjs-oidc';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -35,6 +35,18 @@ import { StaticMiddleware } from './setup-static';
     LoggerModule,
   ],
 })
-export class AppModule {
-  
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(StaticMiddleware)
+      .exclude(
+        { path: '/health', method: RequestMethod.ALL },
+        { path: '/login/callback', method: RequestMethod.ALL },
+        { path: '/login', method: RequestMethod.ALL }
+      )
+      .forRoutes({
+        path: '/',
+        method: RequestMethod.ALL,
+      });
+  }
 }
