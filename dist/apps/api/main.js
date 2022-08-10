@@ -128,20 +128,18 @@ exports.HealthModule = HealthModule;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.StaticMiddleware = void 0;
 const tslib_1 = __webpack_require__("tslib");
-const nestjs_oidc_1 = __webpack_require__("@finastra/nestjs-oidc");
 const common_1 = __webpack_require__("@nestjs/common");
 let StaticMiddleware = class StaticMiddleware {
     use(req, res, next) {
         if (req.isAuthenticated()) {
             return next();
         }
-        res.cookie(nestjs_oidc_1.LOGIN_SESSION_COOKIE, 'logging in', {
-            maxAge: 15 * 1000 * 60,
-        });
-        const channelType = req.params.channelType;
-        const tenantId = req.params.tenantId;
-        const prefix = `/${tenantId}/${channelType}`;
-        res.redirect(`${prefix}/login?redirect_url=${req.url.replace(prefix, '')}`);
+        /* res.cookie(LOGIN_SESSION_COOKIE, 'logging in', {
+   
+         maxAge: 15 * 1000 * 60,
+   
+       }); */
+        res.redirect(`/login`);
     }
 };
 StaticMiddleware = tslib_1.__decorate([
