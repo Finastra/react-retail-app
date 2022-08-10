@@ -112,6 +112,14 @@ body {
 @media (prefers-color-scheme: dark) {
   body {
     @include fds.use-dark-theme();
+    
+    .app-title{
+      @include fds.use-light-theme();
+    }
+
+    .welcome-msg{
+      @include fds.use-light-theme();
+    }
   }
 }
 

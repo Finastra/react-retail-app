@@ -1,6 +1,6 @@
 import { LoggerModule } from '@finastra/nestjs-logger';
 import { ProxyModule } from '@finastra/nestjs-proxy';
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { OidcModule } from '@finastra/nestjs-oidc';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -8,6 +8,7 @@ import { OidcConfigService } from '../configs/oidc-config.service';
 import { ProxyConfigService } from '../configs/proxy-config.service';
 import { appFolder, ServeStaticConfigService } from '../configs/serve-static-config.service';
 import { HealthModule } from './health/health.module';
+import { StaticMiddleware } from './setup-static';
 
 @Module({
   imports: [
@@ -34,4 +35,23 @@ import { HealthModule } from './health/health.module';
     LoggerModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+
+    consumer
+
+      .apply(StaticMiddleware)
+      .exclude(
+        { path: '/health', method: RequestMethod.ALL },
+        { path: '/login/callback', method: RequestMethod.ALL },
+        { path: '/login', method: RequestMethod.ALL }
+
+      )
+
+      .forRoutes({
+        path: '/',
+        method: RequestMethod.ALL,
+      });
+
+  }
+}
