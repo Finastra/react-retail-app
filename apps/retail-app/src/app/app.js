@@ -140,39 +140,12 @@ const getAccounts = useCallback(async () => {
           </div>
           <div className="cards">
             <Carousel show={ !sm ? 1 : !md ? 2 : !lg ? 3 : !xl ? 4 : !xll ? 4 : 5}>
-              {/*accounts.map(account => {
+              {accounts.map(account => {
                 return(
                 <div className="card">
                   <Account title={account.nickname} balance={account.balances[0].amount} id={account.accountNumber}/>
                 </div>)
-              })*/}    
-              <div className="card">
-                <Account title={"account.nickname"} balance={"1"} id={"account.accountNumber"}/>
-              </div>  
-              <div className="card">
-                <Account title={"account.nickname"} balance={"2"} id={"account.accountNumber"}/>
-              </div>
-              <div className="card">
-                <Account title={"account.nickname"} balance={"3"} id={"account.accountNumber"}/>
-              </div>
-              <div className="card">
-                <Account title={"account.nickname"} balance={"4"} id={"account.accountNumber"}/>
-              </div>
-              <div className="card">
-                <Account title={"account.nickname"} balance={"5"} id={"account.accountNumber"}/>
-              </div>
-              <div className="card">
-                <Account title={"account.nickname"} balance={"6"} id={"account.accountNumber"}/>
-              </div>
-              <div className="card">
-                <Account title={"account.nickname"} balance={"7"} id={"account.accountNumber"}/>
-              </div>
-              <div className="card">
-                <Account title={"account.nickname"} balance={"8"} id={"account.accountNumber"}/>
-              </div>
-              <div className="card">
-                <Account title={"account.nickname"} balance={"9"} id={"account.accountNumber"}/>
-              </div>    
+              })}
             </Carousel>
           </div>
         </div>
