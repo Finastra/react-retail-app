@@ -51,10 +51,20 @@ function Sheet() {
       return(
         <div>
           <DateItem date={compareDates(key)}/>
-          {foundTransactions[key].map(transaction => {
-            if (transaction.transactionAmount > 20 ) {
-            return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
-          }})}
+          {foundTransactions[key].filter(transaction => {
+            return transaction.transactionAmount < 20;
+          }).map((transaction, i, row) => 
+          {
+            if (i + 1 === row.length){
+              return (
+                <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id} last/>
+              )}
+            else {
+              return (
+                <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+              )}
+          }
+          )}
         </div>
       )
   }});
@@ -64,10 +74,20 @@ function Sheet() {
       return(
         <div>
           <DateItem date={compareDates(key)}/>
-          {foundTransactions[key].map(transaction => {
-            if (transaction.transactionAmount < 20) {
-            return <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
-          }})}
+          {foundTransactions[key].filter(transaction => {
+            return transaction.transactionAmount > 20;
+          }).map((transaction, i, row) => 
+            {
+            if (i + 1 === row.length){
+              return (
+                <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id} last/>
+              )}
+            else {
+              return (
+                <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+              )}
+          }
+          )}
         </div>
       )
   }});
@@ -77,8 +97,17 @@ function Sheet() {
       return(
         <div>
           <DateItem date={compareDates(key)}/>
-          {foundTransactions[key].map(transaction => 
-              <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+          {foundTransactions[key].map((transaction, i, row) => 
+            {
+              if (i + 1 === row.length){
+                return (
+                  <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id} last/>
+                )}
+              else {
+                return (
+                  <Transaction title={transaction.description} amount={transaction.transactionAmount} accNumber={transaction.id}/>
+                )}
+            }
             )}
         </div>
       )

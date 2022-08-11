@@ -1,5 +1,5 @@
-import './transaction.scss'
-
+import './transaction.scss';
+import '@finastra/divider'
 
 function Transaction({
     title,
@@ -10,7 +10,7 @@ function Transaction({
 
 
   return (
-    <div className={`transaction${last ? "-last" : ""}`}> 
+    <div className="transaction"> 
         <div className="transaction-item">
           <div className="icon">
             <div className="icon-pic">
@@ -31,6 +31,7 @@ function Transaction({
               </div>
           </div>
         </div>
+        {!last && <fds-divider/>}
     </div>
   
   );
