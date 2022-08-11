@@ -134,7 +134,7 @@ function Sheet() {
         </div>
         <div className="layout">
           <Grid container spacing={2}>
-            <Grid item xs={8} md={8} className="button-toggle">
+            <Grid item xs={12} md={8} className="button-toggle">
               <fds-button-toggle-group >
                 <fds-button-toggle label="All" className={`tab ${checkActive(1, "active")}`}
           onClick={() => handleClick(1)}></fds-button-toggle>
@@ -144,13 +144,13 @@ function Sheet() {
           onClick={() => handleClick(3)}></fds-button-toggle>
               </fds-button-toggle-group>
             </Grid>
-            <Grid item xs={4} md={4} >
+            <Grid item xs={12} md={4} >
               <div className="search-input">
                 <fds-search-input value={desc} onInput={filterTransactions}></fds-search-input>
               </div>
             </Grid>
             <Grid item xs={12} md={12}>
-            {/*transactions.length == 0 && (
+            {transactions.length == 0 && (
                 <div className="progress">
                   <div className="progress-bar">
                     <CircularProgress className="progress-bar-icon"/>
@@ -159,22 +159,12 @@ function Sheet() {
                     </div>
                   </div>
                 </div>
-            )*/}
+            )}
+              <div className="scrollable">
                 <div className={`transaction-list ${checkActive(1, "active")}`}>
                   {all}
-                  <DateItem/>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23" last={true}></Transaction>
-                  <DateItem/>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23" last={true}></Transaction>
-                  <DateItem/>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23"></Transaction>
-                  <Transaction title="ERIJROIJZEORJ" accNumber="FFNUEFNIEZUF" amount="232323.23" last={true}></Transaction>
                 </div>
+              </div>
                 <div className={`transaction-list ${checkActive(2, "active")}`}>
                   {income}
                 </div>

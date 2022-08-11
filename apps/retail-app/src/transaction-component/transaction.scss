@@ -47,6 +47,10 @@ body {
     .transaction-subtitle{
         font: var(--fds-body-3);
     }    
+
+    .transaction-info{
+        display: flex;
+    }
 }
 
 html,

@@ -13,6 +13,7 @@ const Carousel = (props) => {
 
     const next = () => {
         if (currentIndex < (length - show)) {
+            console.log(currentIndex);
             setCurrentIndex(prevState => prevState + 3)
         }
     }

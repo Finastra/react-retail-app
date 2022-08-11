@@ -129,37 +129,7 @@ const getAccounts = useCallback(async () => {
                 <div className="card">
                   <Account title={account.nickname} balance={account.balances[0].amount} id={account.accountNumber}/>
                 </div>)
-              })}
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
-              <div className="cards">
-                <Account/>
-              </div>
+              })}          
             </Carousel>
           </div>
         </div>

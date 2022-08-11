@@ -1,6 +1,7 @@
 @use '@finastra/fds-theme' as fds;
 
 body {
+    @include fds.use-light-theme();
     .myadvisor{
         width: 100%;
         height: 328px;;

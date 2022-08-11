@@ -22,12 +22,14 @@ function Transaction({
           </div>
           <div className="transaction-name">
             <div className="transaction-title">
-              <span> {title} </span>
-              <span> $ {amount} </span>    
-            </div>
-            <div className="transaction-subtitle">
-              <span> {accNumber} </span>
-            </div>
+              <div className="transaction-info">
+                {title}
+                <div className="transaction-subtitle">
+                  {accNumber} 
+                </div> 
+              </div>
+              $ {amount} 
+              </div>
           </div>
         </div>
     </div>

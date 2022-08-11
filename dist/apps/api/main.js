@@ -19,17 +19,7 @@ const oidc_config_service_1 = __webpack_require__("./apps/api/src/configs/oidc-c
 const proxy_config_service_1 = __webpack_require__("./apps/api/src/configs/proxy-config.service.ts");
 const serve_static_config_service_1 = __webpack_require__("./apps/api/src/configs/serve-static-config.service.ts");
 const health_module_1 = __webpack_require__("./apps/api/src/app/health/health.module.ts");
-const setup_static_1 = __webpack_require__("./apps/api/src/app/setup-static.ts");
 let AppModule = class AppModule {
-    configure(consumer) {
-        consumer
-            .apply(setup_static_1.StaticMiddleware)
-            .exclude({ path: '/health', method: common_1.RequestMethod.ALL }, { path: '/login/callback', method: common_1.RequestMethod.ALL }, { path: '/login', method: common_1.RequestMethod.ALL })
-            .forRoutes({
-            path: '/',
-            method: common_1.RequestMethod.ALL,
-        });
-    }
 };
 AppModule = tslib_1.__decorate([
     (0, common_1.Module)({
@@ -117,35 +107,6 @@ HealthModule = tslib_1.__decorate([
     })
 ], HealthModule);
 exports.HealthModule = HealthModule;
-
-
-/***/ }),
-
-/***/ "./apps/api/src/app/setup-static.ts":
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StaticMiddleware = void 0;
-const tslib_1 = __webpack_require__("tslib");
-const common_1 = __webpack_require__("@nestjs/common");
-let StaticMiddleware = class StaticMiddleware {
-    use(req, res, next) {
-        if (req.isAuthenticated()) {
-            return next();
-        }
-        /* res.cookie(LOGIN_SESSION_COOKIE, 'logging in', {
-   
-         maxAge: 15 * 1000 * 60,
-   
-       }); */
-        res.redirect(`/login`);
-    }
-};
-StaticMiddleware = tslib_1.__decorate([
-    (0, common_1.Injectable)()
-], StaticMiddleware);
-exports.StaticMiddleware = StaticMiddleware;
 
 
 /***/ }),

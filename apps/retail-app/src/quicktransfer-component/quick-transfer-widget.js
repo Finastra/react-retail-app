@@ -287,7 +287,7 @@ function QuickTransfer() {
           <span> I agree to the terms and conditions </span>
         </div>
         <fds-button secondary="" label="Confirm" slot="primaryAction" disabled={disabled} onClick={handleAgreement}></fds-button>
-          </fds-dialog>*/}
+      </fds-dialog>*/}
     </div>
   
   );

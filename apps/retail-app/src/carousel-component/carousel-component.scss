@@ -73,5 +73,10 @@ body {
 @media (prefers-color-scheme: dark) {
   body {
     @include fds.use-dark-theme();
+    .button-icon{
+        @include fds.use-light-theme();
+    }
   }
+
+  
 }

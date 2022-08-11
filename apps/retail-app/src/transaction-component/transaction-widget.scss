@@ -35,12 +35,11 @@ body {
         max-height: 800px;    
     }
 
-    .transaction-list:hover{
-        overflow: overlay;
+    .scrollable:hover{
+        overflow-y: overlay;
     }
 
     .transaction-list.active{
-        padding-top: 24px;
         display: block;
     }
 
@@ -100,5 +99,14 @@ body {
   body {
     @include fds.use-dark-theme();
   }
+}
+
+@media only screen and (max-width: 900px) {
+    body{
+        .search-input{
+            justify-content: flex-start;
+        }
+    }
+    
 }
 
