@@ -1,81 +1,74 @@
-@use '@finastra/fds-theme' as fds;
-
-body {
-    @include fds.use-light-theme();
-    .quick-transfer{
-        width: 100%;
-        height: 100%;
-        border-radius: 4px;
-        background-color: var(--fds-surface);;
-        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    }
-
-    .quick-transfer-content{
-        padding: 24px;
-        overflow: auto;
-    }
-
-    .quick-transfer-title{
-        font: var(--fds-headline-5);
-        color: var(--fds-on-background);
-    }
-
-    .quick-transer-inputs{
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .sendto{
-        padding-top: 24px;
-        padding-bottom: 24px;
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .amount{
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .button{
-        float: right;
-        padding-top: 24px;
-    }
-
-    .dropdown{
-        max-height: 150px;
-        overflow: auto;
-    }
-
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: var(--fds-surface-selected);
-        border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: var(--fds-surface);
-    }
-
-    fds-select{
-        padding-bottom: 24px;
-        width: 100%;
-    }
-
-    fds-dialog{
-        --fds-dialog-min-width: 400px;
-    }
-    
-
-
+.quick-transfer{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: var(--fds-surface);;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
+
+.quick-transfer-content{
+    padding: 24px;
+    overflow: auto;
+}
+
+.quick-transfer-title{
+    font: var(--fds-headline-5);
+    color: var(--fds-on-background);
+}
+
+.quick-transer-inputs{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.sendto{
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.amount{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.button{
+    float: right;
+    padding-top: 24px;
+}
+
+.dropdown{
+    max-height: 150px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--fds-surface-selected);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fds-surface);
+}
+
+fds-select{
+    padding-bottom: 24px;
+    width: 100%;
+}
+
+fds-dialog{
+    --fds-dialog-min-width: 400px;
+}
+
 
 html,
 body {
@@ -84,8 +77,3 @@ body {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    @include fds.use-dark-theme();
-  }
-}

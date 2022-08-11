@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@finastra/fds-theme' as fds;
+
+body {
+    @include fds.use-light-theme();
+
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+      @include fds.use-dark-theme();
+      
+      .app-title{
+        @include fds.use-light-theme();
+      }
+  
+      .welcome-msg{
+        @include fds.use-light-theme();
+      }
+
+      .button-icon{
+        @include fds.use-light-theme();
+    }
+    }
+  }
+  
+
+  @media only screen and (max-width: 900px) {
+    body{
+        .search-input{
+            justify-content: flex-start;
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 415px) {
+    body{
+        .transaction-title{
+            font: var(--fds-subtitle-3);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .transaction-subtitle{
+            font: var(--fds-body-3);
+        } 
+
+        .transaction-item{
+            padding: 5px;
+        }
+    }
+    
+}
