@@ -1,63 +1,105 @@
 @use '@finastra/fds-theme' as fds;
 
 body {
+    background-color: var(--fds-background);
+    @include fds.bg-color(background)
     margin: 0;
     padding: 0;
     list-style-type: none;
-    @include fds.use-light-theme();
-    .sb-show-main.sb-main-centered {
-        display: block;
-      }
-      .sb-show-main.sb-main-centered #root {
-        padding: 0;
-      }
-      body.sb-main-centered #root-inner {
-        padding: 0;
-      }
-      #root-inner fds-app-bar {
-        min-width: calc(100vw - 180px);
-      }
+
       fds-button {
         padding-left: var(--fds-spacing-3);
       }
+
       fds-user-profile fds-button {
         line-height: 0px;
         padding: var(--fds-spacing-0) var(--fds-spacing-3) var(--fds-spacing-2) var(--fds-spacing-3);
       }
+
       fds-user-profile fds-button + fds-button {
         margin-top: var(--fds-spacing-2);
       }
+
       .fds-sidenav {
         --mdc-drawer-width: 300px;
-        background-color: var(--fds-surface);
-        color: var(--fds-on-surface);
+        @include fds.property(background-color,  surface);
+        @include fds.text-color(on-surface);
       }
+
       .fds-sidenav-header {
-        background-color: var(--fds-background);
+        @include fds.property(background-color,  background);
         height: 210px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
+
       .fds-sidenav-list {
         --mdc-theme-text-primary-on-background: var(--fds-on-background);
         width: 100%;
       }
 
       .header {
-        width:100%;
-        height:180px;
-        background-color: var(--fds-primary); 
+        background: url("../assets/Background.png") no-repeat;
+        height: 350px;
+        background-size: cover;
+        @include fds.property(background-color,  background);
+        width: 100%;
+      }
+
+      .header-title{
+        padding: 32px;
+        padding-top:48px;
+        height: 70px;
+        width: 300px;
+      }
+
+      .header-icon{
+        float: left;
+      }
+
+      .app-title{
+        float: left;
+        margin-left: 10px;
+        font: var(--fds-headline-3);
+        color: var(--fds-surface);
+      }
+
+      .welcome-msg{
+        @include fds.typography(body-1);
+        @include fds.text-color(surface);
+      }
+
+      .content{
+         @include fds.padding(5, top);
       }
 
       .main-content{
-        padding-left: 10%;
+        display: flex;
+        justify-content: center;
         padding-right: 10%;
-        padding-top: 10%;
+        padding-left: 10%;
+        padding-top: 2%;
+         @include fds.property(background-color,  background);
       }
 
       .side-content{
         margin-bottom: 10px;
+      }
+
+      .agreement{
+        display: flex;
+        align-items: center;
+      }
+      
+      .card{
+        display: flex;
+        justify-content: center;
+      }
+
+      fds-skeleton{
+        --fds-skeleton-width:
+        --fds-skeleton-height:
       }
 
 }
@@ -69,8 +111,5 @@ body {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    @include fds.use-dark-theme();
-  }
-}
+
+

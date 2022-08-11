@@ -11,9 +11,7 @@ function MyAdvisor() {
                 <span>My advisor</span>
             </div>
             <div className="advisor">
-                <div className="advisor-pp">
-                    <fds-avatar></fds-avatar>
-                </div>
+                <fds-avatar></fds-avatar>
                 <div className="advisor-info">
                     <div className="advisor-name">
                         <span>John Doe</span>
@@ -37,8 +35,7 @@ function MyAdvisor() {
                 <fds-text-button label="Appointment" icon="book">
                 </fds-text-button>
             </div>
-        </div>
-        
+        </div>       
     </div>
   
   );
