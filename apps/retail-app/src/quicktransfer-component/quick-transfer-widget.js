@@ -241,7 +241,7 @@ function QuickTransfer() {
             <div className="sendto">
               <fds-autocomplete onInput={e => handlePayee(e)} icon="person" placeholder="Choose a person...">
                 {options.map((option) => 
-                  <mwc-list-item value={option.payeeName} onClick={itemClickPayee(option)}>{option.payeeName}</mwc-list-item>
+                  <mwc-list-item value={option.payeeName} onClick={e => itemClickPayee(option)}>{option.payeeName}</mwc-list-item>
                   )}
               </fds-autocomplete>
             </div>
