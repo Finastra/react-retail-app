@@ -43,7 +43,7 @@ body {
         background: url("../assets/Background.png") no-repeat;
         height: 350px;
         background-size: cover;
-        background-color: var(--fds-background);
+        @include fds.property(background-color,  background);
         width: 100%;
       }
 
