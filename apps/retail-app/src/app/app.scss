@@ -23,7 +23,7 @@ body {
       .fds-sidenav {
         --mdc-drawer-width: 300px;
         @include fds.property(background-color,  surface);
-        color: var(--fds-on-surface);
+        @include fds.text-color(on-surface);
       }
 
       .fds-sidenav-header {
