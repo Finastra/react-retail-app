@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    @include fds.use-light-theme();
+
       fds-button {
         padding-left: var(--fds-spacing-3);
       }
@@ -110,18 +110,5 @@ body {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    @include fds.use-dark-theme();
-    
-    .app-title{
-      @include fds.use-light-theme();
-    }
-
-    .welcome-msg{
-      @include fds.use-light-theme();
-    }
-  }
-}
 
 

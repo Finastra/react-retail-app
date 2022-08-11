@@ -1,88 +1,81 @@
-@use '@finastra/fds-theme' as fds;
-
-body {
-    @include fds.use-light-theme();
-    
-    .Sheet{
-        width: 100%;
-        height: 100%;
-        border-radius: 4px;
-        background-color: var(--fds-surface);;
-        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    }
-
-    .sheet-item{
-        padding: 24px;
-        overflow: hidden;
-    }
-
-    .header-transaction:before{
-        padding-right: 4px;
-    }
-
-    .title{
-        font: var(--fds-headline-5);
-        color: var(--fds-on-background);
-    }
-    
-    .layout{
-        padding-top: 24px;
-    }
-
-    .transaction-list{
-        padding-top: 24px;
-        display: none;
-        max-height: 800px;    
-    }
-
-    .scrollable:hover{
-        overflow-y: overlay;
-    }
-
-    .transaction-list.active{
-        display: block;
-    }
-
-    .progress{
-        padding: 30%;
-    }
-
-    .progress-bar{
-        display: flex;
-    }
-
-    .progress-bar-text{
-        font: var(--fds-body-2);
-        padding-left: var(--fds-spacing-3);
-        padding-top: 10px;
-    }
-
-    .search-input{
-        display: flex;
-        justify-content: flex-end
-    }
-
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-        
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: var(--fds-surface-selected);
-        border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: var(--fds-surface);
-    }
-
-    fds-button-toggle-group{
-        width: 80%;
-    }
-
-
+.Sheet{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: var(--fds-surface);;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
+
+.sheet-item{
+    padding: 24px;
+    overflow: hidden;
+}
+
+.header-transaction:before{
+    padding-right: 4px;
+}
+
+.title{
+    font: var(--fds-headline-5);
+    color: var(--fds-on-background);
+}
+
+.layout{
+    padding-top: 24px;
+}
+
+.transaction-list{
+    padding-top: 24px;
+    display: none;
+    max-height: 800px;    
+}
+
+.scrollable:hover{
+    overflow-y: overlay;
+}
+
+.transaction-list.active{
+    display: block;
+}
+
+.progress{
+    padding: 30%;
+}
+
+.progress-bar{
+    display: flex;
+}
+
+.progress-bar-text{
+    font: var(--fds-body-2);
+    padding-left: var(--fds-spacing-3);
+    padding-top: 10px;
+}
+
+.search-input{
+    display: flex;
+    justify-content: flex-end
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--fds-surface-selected);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fds-surface);
+}
+
+fds-button-toggle-group{
+    width: 80%;
+}
+
 
 html,
 body {
@@ -91,18 +84,4 @@ body {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    @include fds.use-dark-theme();
-  }
-}
-
-@media only screen and (max-width: 900px) {
-    body{
-        .search-input{
-            justify-content: flex-start;
-        }
-    }
-    
-}
 
