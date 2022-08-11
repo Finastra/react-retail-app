@@ -1,0 +1,52 @@
+.icon{
+    width: 32px;
+    height: 32px;
+    background-color: var(--fds-secondary-lighter);
+    border-radius: 32px;
+    color: var(--fds-primary);
+    text-align: center;
+    float: left;
+}
+
+.transaction-item{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.material-icons{
+    font-size: 16px;
+    padding: 7px;
+}
+
+.transaction-name{
+    width: 90%;
+    height: 100%;
+    padding-left: 12px;
+}
+
+.transaction-title{
+    font: var(--fds-subtitle-2);
+    display: flex;
+    justify-content: space-between;
+}
+
+.transaction-subtitle{
+    font: var(--fds-body-3);
+}    
+
+.transaction-info{
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+
+  

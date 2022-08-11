@@ -1,11 +1,13 @@
-import './transaction.scss'
-
+import './transaction.scss';
+import '@finastra/divider'
 
 function Transaction({
     title,
     amount,
     accNumber,
+    last
 }) {
+
 
   return (
     <div className="transaction"> 
@@ -19,16 +21,17 @@ function Transaction({
           </div>
           <div className="transaction-name">
             <div className="transaction-title">
-              <span> {title} </span>
-              <div className="transaction-amount">
-                <span> $ {amount} </span>
-              </div>      
-            </div>
-            <div className="transaction-subtitle">
-              <span> {accNumber} </span>
-            </div>
+              <div className="transaction-info">
+                {title}
+                <div className="transaction-subtitle">
+                  {accNumber} 
+                </div> 
+              </div>
+              $ {amount} 
+              </div>
           </div>
         </div>
+        {!last && <fds-divider/>}
     </div>
   
   );
