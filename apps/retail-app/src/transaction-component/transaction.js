@@ -8,7 +8,6 @@ function Transaction({
     last
 }) {
 
-  const checkActive = (last, className) => last ? className : "";
 
   return (
     <div className={`transaction${last ? "-last" : ""}`}> 

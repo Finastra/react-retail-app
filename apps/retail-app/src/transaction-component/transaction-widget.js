@@ -11,7 +11,7 @@ import Transaction from './transaction.js';
 
 function Sheet() {
 
-  const serverUri = 'http://localhost:3000';
+  const serverUri = '';
   const serviceId = 'ACCOUNT_INFORMATION_US';
   const accountId = '~UIP8sfkWLqjf2mk6TM3cMBkq9XSUjejJZm5bLRekj.enzTPZvoKXEw1.TJmmC4b2';
   const target = `/accounts/${accountId}/transactions?offset=0&limit=100`;

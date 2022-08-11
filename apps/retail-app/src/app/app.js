@@ -22,7 +22,7 @@ import Carousel from '../carousel-component/carousel-component';
 
 export function App() {
 
-  const serverUri = 'http://localhost:3000';
+  const serverUri = '';
   const serviceId1 = 'CONSUMER_PROFILE';
   const serviceId2 = 'ACCOUNT_INFORMATION_US';
   
