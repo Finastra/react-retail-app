@@ -10,15 +10,17 @@ import '@finastra/logo';
 import '@material/mwc-list';
 import '@finastra/logo';
 import '@finastra/checkbox';
+import '@finastra/account-card';
+import '@finastra/skeleton';
 import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
-import Sheet from '../transaction-component/transaction-widget';
-import QuickTransfer from '../quicktransfer-component/quick-transfer-widget';
-import MyAdvisor from '../myadvisor-component/myadvisor-widget';
-import Account from '../account-component/account-component';
-import Chart from '../chart-component/chart-component';
-import Carousel from '../carousel-component/carousel-component';
+import Sheet from '../../libs/transaction-component/transaction-widget';
+import QuickTransfer from '../../libs/quicktransfer-component/quick-transfer-widget';
+import MyAdvisor from '../../libs/myadvisor-component/myadvisor-widget';
+import Chart from '../../libs/chart-component/chart-component';
+import Carousel from '../../libs/carousel-component/carousel-component';
+import AccountSkeleton from '../../libs/skeleton-card-component/skeleton-component';
 import { createTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -139,11 +141,11 @@ const getAccounts = useCallback(async () => {
             </div>
           </div>
           <div className="cards">
-            <Carousel show={ !sm ? 1 : !md ? 2 : !lg ? 3 : !xl ? 4 : !xll ? 4 : 5}>
+            <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6}>
               {accounts.map(account => {
                 return(
                 <div className="card">
-                  <Account title={account.nickname} balance={account.balances[0].amount} id={account.accountNumber}/>
+                  <fds-account-card name={account.nickname} balance={account.balances[0].amount} number={account.accountNumber} currency="USD"/>
                 </div>)
               })}
             </Carousel>

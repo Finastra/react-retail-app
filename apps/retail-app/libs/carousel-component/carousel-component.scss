@@ -50,6 +50,10 @@ body {
         width: 20%;
     }
 
+    .carousel-content.show-6 > * {
+        width: 16.67%;
+    }
+
     .carousel-content::-webkit-scrollbar, .carousel-content::-webkit-scrollbar {
         display: none;
     }

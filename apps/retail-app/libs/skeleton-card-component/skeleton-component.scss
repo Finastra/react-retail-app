@@ -1,0 +1,24 @@
+@use '@finastra/fds-theme' as fds;
+
+body {
+    @include fds.use-light-theme();
+
+    .skeleton-container{
+        width: 230px;
+        height: 137px;
+        padding: 16px;
+    }
+}
+
+html,
+body {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include fds.use-dark-theme();
+  }
+}
