@@ -67,7 +67,7 @@ body {
 
       .welcome-msg{
         @include fds.typography(body-1);
-        color: var(--fds-surface);
+        @include fds.text-color(surface);
       }
 
       .content{
