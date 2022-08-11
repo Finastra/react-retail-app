@@ -254,7 +254,7 @@ function QuickTransfer() {
             </div>
         </div>
       </div>
-      {/*<fds-dialog open={openDialog} heading="Payment Confirmation" scrimClickAction="">
+      <fds-dialog open={openDialog} heading="Payment Confirmation" scrimClickAction="">
         <p> Payee: <strong>{payee ? payee.payeeName : null}</strong> </p>
         <p> Amount: <strong>{amount} $</strong></p>
         <fds-select outlined="" label="Account..." icon="payments">
@@ -265,7 +265,7 @@ function QuickTransfer() {
         <fds-textarea onInput={e => handleMemo(e.target.value)}label="Add a memo" charcounter="true"  maxLength={100}></fds-textarea>
         <fds-button secondary="" label="Confirm" slot="primaryAction" onClick={handlePayment}></fds-button>
         <fds-text-button label="Cancel" slot="secondaryAction" onClick={handleClosePayment}></fds-text-button>
-          </fds-dialog>*/}
+      </fds-dialog>
       <Snackbar
         open={openSnackbarError}
         autoHideDuration={6000}
@@ -280,14 +280,14 @@ function QuickTransfer() {
       >
         <Alert severity="success">{response}</Alert>
       </Snackbar>
-      {/*<fds-dialog open={agreementState} heading="Terms and condition agreement" scrimClickAction="">
+      <fds-dialog open={agreementState} heading="Terms and condition agreement" scrimClickAction="">
         <p>To be able to access this app, you must first agree to the terms and conditions:</p>
         <div className="agreement">
           <fds-checkbox  onClick={e => checkBoxStatus(e.target.checked)}/>
           <span> I agree to the terms and conditions </span>
         </div>
         <fds-button secondary="" label="Confirm" slot="primaryAction" disabled={disabled} onClick={handleAgreement}></fds-button>
-        </fds-dialog>*/}
+        </fds-dialog>
     </div>
   
   );
