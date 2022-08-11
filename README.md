@@ -12,11 +12,13 @@ You have to firstly build the client side by running the following command:
 
 ```bash
   yarn nx build retail-app
+  npm nx build retail-app
 ```
 And then serving the api by the following command:
 
 ```bash
   yarn nx serve api
+  npm nx serve api
 ```
 ## Environement variables
 
