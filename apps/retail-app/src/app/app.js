@@ -15,12 +15,12 @@ import '@finastra/skeleton';
 import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
-import Sheet from '../../libs/transaction-component/transaction-widget';
-import QuickTransfer from '../../libs/quicktransfer-component/quick-transfer-widget';
-import MyAdvisor from '../../libs/myadvisor-component/myadvisor-widget';
-import Chart from '../../libs/chart-component/chart-component';
-import Carousel from '../../libs/carousel-component/carousel-component';
-import AccountSkeleton from '../../libs/skeleton-card-component/skeleton-component';
+import Sheet from '../components/transaction-component/transaction-widget';
+import QuickTransfer from '../components/quicktransfer-component/quick-transfer-widget';
+import MyAdvisor from '../components/myadvisor-component/myadvisor-widget';
+import Chart from '../components/chart-component/chart-component';
+import Carousel from '../components/carousel-component/carousel-component';
+import AccountSkeleton from '../components/skeleton-card-component/skeleton-component';
 import { createTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
