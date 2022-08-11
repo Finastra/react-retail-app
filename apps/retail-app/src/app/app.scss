@@ -80,7 +80,7 @@ body {
         padding-right: 10%;
         padding-left: 10%;
         padding-top: 2%;
-        background-color: var(--fds-background);
+         @include fds.property(background-color,  background);
       }
 
       .side-content{
