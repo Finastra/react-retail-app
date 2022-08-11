@@ -280,14 +280,14 @@ function QuickTransfer() {
       >
         <Alert severity="success">{response}</Alert>
       </Snackbar>
-      {/*<fds-dialog open={agreementState} heading="Terms and condition agreement" scrimClickAction="">
+      <fds-dialog open={agreementState} heading="Terms and condition agreement" scrimClickAction="">
         <p>To be able to access this app, you must first agree to the terms and conditions:</p>
         <div className="agreement">
           <fds-checkbox  onClick={e => checkBoxStatus(e.target.checked)}/>
           <span> I agree to the terms and conditions </span>
         </div>
         <fds-button secondary="" label="Confirm" slot="primaryAction" disabled={disabled} onClick={handleAgreement}></fds-button>
-      </fds-dialog>*/}
+      </fds-dialog>
     </div>
   
   );
