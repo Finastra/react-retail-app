@@ -1,40 +1,30 @@
 @use '@finastra/fds-theme' as fds;
 
-
-
 body {
     background-color: var(--fds-background);
     margin: 0;
     padding: 0;
     list-style-type: none;
     @include fds.use-light-theme();
-    .sb-show-main.sb-main-centered {
-        display: block;
-      }
-      .sb-show-main.sb-main-centered #root {
-        padding: 0;
-      }
-      body.sb-main-centered #root-inner {
-        padding: 0;
-      }
-      #root-inner fds-app-bar {
-        min-width: calc(100vw - 180px);
-      }
       fds-button {
         padding-left: var(--fds-spacing-3);
       }
+
       fds-user-profile fds-button {
         line-height: 0px;
         padding: var(--fds-spacing-0) var(--fds-spacing-3) var(--fds-spacing-2) var(--fds-spacing-3);
       }
+
       fds-user-profile fds-button + fds-button {
         margin-top: var(--fds-spacing-2);
       }
+
       .fds-sidenav {
         --mdc-drawer-width: 300px;
         background-color: var(--fds-surface);
         color: var(--fds-on-surface);
       }
+
       .fds-sidenav-header {
         background-color: var(--fds-background);
         height: 210px;
@@ -42,6 +32,7 @@ body {
         justify-content: center;
         align-items: center;
       }
+
       .fds-sidenav-list {
         --mdc-theme-text-primary-on-background: var(--fds-on-background);
         width: 100%;
@@ -98,6 +89,11 @@ body {
       .agreement{
         display: flex;
         align-items: center;
+      }
+      
+      .card{
+        display: flex;
+        justify-content: center;
       }
 
 }

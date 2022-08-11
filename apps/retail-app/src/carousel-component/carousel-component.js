@@ -1,8 +1,8 @@
-import React from 'react';
 import { IconButton } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState, useEffect } from 'react';
+import { useSwipeable } from "react-swipeable";
 import './carousel-component.scss' 
 
 const Carousel = (props) => {
@@ -13,23 +13,35 @@ const Carousel = (props) => {
 
     const next = () => {
         if (currentIndex < (length - show)) {
-            console.log(currentIndex);
-            setCurrentIndex(prevState => prevState + 3)
+            setCurrentIndex(prevState => prevState + show)
         }
     }
     
     const prev = () => {
         if (currentIndex > 0) {
-            setCurrentIndex(prevState => prevState - 3)
+            setCurrentIndex(prevState => prevState - show)
         }
     }
 
+    const handlers = useSwipeable({
+        onSwipedLeft: () => {
+            if (currentIndex < (length - show)) {
+                setCurrentIndex(prevState => prevState + show)
+            }
+        },
+        onSwipedRight: () => {
+            if (currentIndex > 0) {
+                setCurrentIndex(prevState => prevState - show)
+             }
+            }     
+        })
+
     useEffect(() => {
-        setLength(children.length)
+        setLength(children.length);
     }, [children])
 
     return (
-        <div className="carousel-container">
+        <div {...handlers} className="carousel-container">
             <div className="carousel-buttons">
             {   <IconButton onClick={next} className="right-arrow">
                     <ArrowForwardIosIcon className="button-icon"/>

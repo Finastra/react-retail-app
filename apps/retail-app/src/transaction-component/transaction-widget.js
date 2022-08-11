@@ -2,6 +2,7 @@ import './transaction-widget.scss'
 import '@finastra/button-toggle-group';
 import '@finastra/button-toggle';
 import '@finastra/search-input';
+import '@finastra/circular-progress';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
 import { Grid, CircularProgress } from '@mui/material';
@@ -153,7 +154,7 @@ function Sheet() {
             {transactions.length == 0 && (
                 <div className="progress">
                   <div className="progress-bar">
-                    <CircularProgress className="progress-bar-icon"/>
+                    <fds-circular-progress indeterminate></fds-circular-progress>
                     <div className="progress-bar-text">
                       <span>Loading...</span>
                     </div>

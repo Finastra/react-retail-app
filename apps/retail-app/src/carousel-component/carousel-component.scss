@@ -1,7 +1,5 @@
 @use '@finastra/fds-theme' as fds;
 
-
-
 body {
     @include fds.use-light-theme();
     .carousel-container {
@@ -14,10 +12,9 @@ body {
     
     .carousel-wrapper {
         display: flex;
-        width: 1140px;
         position: relative;
         padding-top: 12px;
-        padding-left: 48px;
+        //padding-left: 48px;
         padding-bottom: 12px;
         
     }
@@ -33,12 +30,26 @@ body {
         -ms-overflow-style: none;  
         scrollbar-width: none; 
     }
-    
 
-    .carousel-content.show-3 > * {
-        width: 380px;
+    .carousel-content.show-1 > * {
+        width: 100%;
+    }
+
+    .carousel-content.show-2 > * {
+        width: 50%;
     }
     
+    .carousel-content.show-3 > * {
+        width: 33.33%;
+    }
+
+    .carousel-content.show-4 > * {
+        width: 25%;
+    }
+
+    .carousel-content.show-5 > * {
+        width: 20%;
+    }
 
     .carousel-content::-webkit-scrollbar, .carousel-content::-webkit-scrollbar {
         display: none;

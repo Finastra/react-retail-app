@@ -10,7 +10,7 @@ import '@finastra/logo';
 import '@material/mwc-list';
 import '@finastra/logo';
 import '@finastra/checkbox';
-import { Grid, Box, Paper } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
 import Sheet from '../transaction-component/transaction-widget';
@@ -19,6 +19,8 @@ import MyAdvisor from '../myadvisor-component/myadvisor-widget';
 import Account from '../account-component/account-component';
 import Chart from '../chart-component/chart-component';
 import Carousel from '../carousel-component/carousel-component';
+import { createTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export function App() {
 
@@ -35,6 +37,22 @@ export function App() {
   let [fullName, setFullName] = useState("");
   let [accounts, setAccounts] = useState([]);
   
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        sm: 700,
+        md: 1011,
+        lg: 1350,
+        xl: 1950,
+        xll: 2000,
+      },
+    },
+  });
+  const sm = useMediaQuery(theme.breakpoints.up('sm'));
+  const md = useMediaQuery(theme.breakpoints.up('md'));
+  const lg = useMediaQuery(theme.breakpoints.up('lg'));
+  const xl = useMediaQuery(theme.breakpoints.up('xl'));
+  const xll = useMediaQuery(theme.breakpoints.up('xll'));
 
   const getProfile = useCallback(async () => {
     try {
@@ -59,8 +77,6 @@ const getAccounts = useCallback(async () => {
     console.log(e)
   }
 })
-
-
 
   useEffect(() => {
     getProfile();
@@ -123,13 +139,40 @@ const getAccounts = useCallback(async () => {
             </div>
           </div>
           <div className="cards">
-            <Carousel show={3}>
-              {accounts.map(account => {
+            <Carousel show={ !sm ? 1 : !md ? 2 : !lg ? 3 : !xl ? 4 : !xll ? 4 : 5}>
+              {/*accounts.map(account => {
                 return(
                 <div className="card">
                   <Account title={account.nickname} balance={account.balances[0].amount} id={account.accountNumber}/>
                 </div>)
-              })}          
+              })*/}    
+              <div className="card">
+                <Account title={"account.nickname"} balance={"1"} id={"account.accountNumber"}/>
+              </div>  
+              <div className="card">
+                <Account title={"account.nickname"} balance={"2"} id={"account.accountNumber"}/>
+              </div>
+              <div className="card">
+                <Account title={"account.nickname"} balance={"3"} id={"account.accountNumber"}/>
+              </div>
+              <div className="card">
+                <Account title={"account.nickname"} balance={"4"} id={"account.accountNumber"}/>
+              </div>
+              <div className="card">
+                <Account title={"account.nickname"} balance={"5"} id={"account.accountNumber"}/>
+              </div>
+              <div className="card">
+                <Account title={"account.nickname"} balance={"6"} id={"account.accountNumber"}/>
+              </div>
+              <div className="card">
+                <Account title={"account.nickname"} balance={"7"} id={"account.accountNumber"}/>
+              </div>
+              <div className="card">
+                <Account title={"account.nickname"} balance={"8"} id={"account.accountNumber"}/>
+              </div>
+              <div className="card">
+                <Account title={"account.nickname"} balance={"9"} id={"account.accountNumber"}/>
+              </div>    
             </Carousel>
           </div>
         </div>
