@@ -71,7 +71,7 @@ body {
       }
 
       .content{
-        padding-top: 48px;
+         @include fds.padding(5, top);
       }
 
       .main-content{
