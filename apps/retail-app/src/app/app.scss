@@ -27,7 +27,7 @@ body {
       }
 
       .fds-sidenav-header {
-        background-color: var(--fds-background);
+        @include fds.property(background-color,  background);
         height: 210px;
         display: flex;
         justify-content: center;
