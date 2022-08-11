@@ -10,7 +10,7 @@ import { useEffect, useState, useCallback } from 'react';
 
 function QuickTransfer() {
 
-  const serverUri = 'http://localhost:3000';
+  const serverUri = '';
   const serviceId1 = 'PERSON_TO_PERSON';
   const serviceId2 = 'ACCOUNT_INFORMATION_US';
   const serviceId3 = 'PERSON_TO_PERSON';
