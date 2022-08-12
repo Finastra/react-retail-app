@@ -9,7 +9,7 @@ function DateItem({
     <div className="date-item"> 
         <div className="box">
           <div className="box-icon">
-            <CalendarToday/>
+            <CalendarToday fontSize="small" />
           </div>
           <div className="box-title">
               <span>{date}</span>
