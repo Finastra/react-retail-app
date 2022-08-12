@@ -38,16 +38,20 @@ body {
     body{
         .transaction-title{
             font: var(--fds-subtitle-3);
-            display: flex;
-            justify-content: space-between;
         }
 
         .transaction-subtitle{
             font: var(--fds-body-3);
         } 
 
-        .transaction-item{
-            padding: 5px;
+        .icon{
+            height: 24px;
+            width: 24px;
+            border-radius: 24px;
+        }
+
+        .material-icons{
+            font-size: 12px;
         }
     }
     

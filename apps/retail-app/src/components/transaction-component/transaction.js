@@ -13,11 +13,9 @@ function Transaction({
     <div className="transaction"> 
         <div className="transaction-item">
           <div className="icon">
-            <div className="icon-pic">
-              <span className="material-icons">
-                width_normal
-              </span>
-            </div>
+            <span className="material-icons">
+              width_normal
+            </span>
           </div>
           <div className="transaction-name">
             <div className="transaction-title">
@@ -28,7 +26,7 @@ function Transaction({
                 </div> 
               </div>
               $ {amount} 
-              </div>
+            </div>
           </div>
         </div>
         {!last && <fds-divider/>}

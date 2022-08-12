@@ -5,7 +5,7 @@ import '@finastra/search-input';
 import '@finastra/circular-progress';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
-import { Grid, CircularProgress } from '@mui/material';
+import { Grid } from '@mui/material';
 import DateItem from './date-item.js';
 import Transaction from './transaction.js';
 
@@ -180,16 +180,16 @@ function Sheet() {
               </div>
             </Grid>
             <Grid item xs={12} md={12}>
-            {transactions.length == 0 && (
-                <div className="progress">
-                  <div className="progress-bar">
-                    <fds-circular-progress indeterminate></fds-circular-progress>
-                    <div className="progress-bar-text">
-                      <span>Loading...</span>
+              {transactions.length == 0 && (
+                  <div className="progress">
+                    <div className="progress-bar">
+                      <fds-circular-progress indeterminate></fds-circular-progress>
+                      <div className="progress-bar-text">
+                        <span>Loading...</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-            )}
+              )}
               <div className="scrollable">
                 <div className={`transaction-list ${checkActive(1, "active")}`}>
                   {all}
@@ -206,7 +206,6 @@ function Sheet() {
         </div>
       </div>
     </div>
-  
   );
 }
 

@@ -26,7 +26,8 @@
 
 .transaction-list{
     padding-top: 24px;
-    display: none;
+    display: flex;
+    flex-direction: column;
     max-height: 800px;    
 }
 
@@ -35,7 +36,8 @@
 }
 
 .transaction-list.active{
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .progress{
