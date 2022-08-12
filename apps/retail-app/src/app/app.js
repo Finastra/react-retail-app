@@ -50,11 +50,14 @@ export function App() {
       },
     },
   });
+
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const lg = useMediaQuery(theme.breakpoints.up('lg'));
   const xl = useMediaQuery(theme.breakpoints.up('xl'));
   const xll = useMediaQuery(theme.breakpoints.up('xll'));
+
+  const n = 6;
 
   const getProfile = useCallback(async () => {
     try {
@@ -136,19 +139,28 @@ const getAccounts = useCallback(async () => {
             <div className="app-title">
               <span>Retail app</span>
               <div className="welcome-msg">
-                <span> Welcome Back, {firstName}</span>
+                {firstName === "" ? <fds-skeleton/> : <span> Welcome Back, {firstName}</span>}
               </div>
             </div>
           </div>
           <div className="cards">
-            <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6}>
-              {accounts.map(account => {
-                return(
-                <div className="card">
-                  <fds-account-card name={account.nickname} balance={account.balances[0].amount} number={account.accountNumber} currency="USD"/>
-                </div>)
-              })}
-            </Carousel>
+            {accounts.length === 0 ? 
+              <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6} loading>
+               { [...Array(n)].map((e, i) =>
+                    <div className="card">
+                      <AccountSkeleton/>
+                    </div>
+               )}
+              </Carousel> : 
+              <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6} >
+                {accounts.map(account => {
+                  return(
+                  <div className="card">
+                    <fds-account-card name={account.nickname} balance={account.balances[0].amount} number={account.accountNumber} currency="USD"/>
+                  </div>)
+                })}
+              </Carousel>
+            }
           </div>
         </div>
         <div className="content">

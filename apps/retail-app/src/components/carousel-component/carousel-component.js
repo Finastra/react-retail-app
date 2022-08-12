@@ -6,7 +6,7 @@ import { useSwipeable } from "react-swipeable";
 import './carousel-component.scss' 
 
 const Carousel = (props) => {
-    const {children, show} = props
+    const {children, show, loading} = props
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [length, setLength] = useState(children.length)
@@ -43,13 +43,13 @@ const Carousel = (props) => {
     return (
         <div {...handlers} className="carousel-container">
             <div className="carousel-buttons">
-            {   <IconButton onClick={next} className="right-arrow">
+            {   <IconButton onClick={next} className={`right-arrow ${loading && "loading"}`}>
                     <ArrowForwardIosIcon className="button-icon"/>
                 </IconButton> }   
-            {  <IconButton onClick={prev} className="left-arrow">
+        {  <IconButton onClick={prev} className={`left-arrow ${loading && "loading"}`}>
                     <ArrowBackIosIcon className="button-icon"/>
                 </IconButton> }
-            </div>
+                </div>
             <div className="carousel-wrapper"> 
                 <div className="carousel-content-wrapper">
                     <div className={`carousel-content show-${show}`} style={{ transform: `translateX(-${currentIndex * (100 / show)}%)` }}>

@@ -21,6 +21,7 @@
     "@finastra/button": "^0.0.37",
     "@finastra/button-toggle": "^0.0.37",
     "@finastra/button-toggle-group": "^0.0.37",
+    "@finastra/card": "^0.0.39",
     "@finastra/charts": "^0.0.37",
     "@finastra/checkbox": "^0.0.37",
     "@finastra/circular-progress": "^0.0.37",

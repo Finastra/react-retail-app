@@ -61,10 +61,15 @@
 .carousel-buttons{
     padding: 12px;
     padding-right: 24px;
+    min-height: 40px;
 }
 
 .left-arrow, .right-arrow {
     float: right;
+}
+
+.left-arrow.loading, .right-arrow.loading{
+    display: none;
 }
 
 .button-icon{
