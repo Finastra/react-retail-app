@@ -2,7 +2,7 @@
 
 body {
     background-color: var(--fds-background);
-    @include fds.bg-color(background)
+    @include fds.bg-color(background);
     margin: 0;
     padding: 0;
     list-style-type: none;
