@@ -1,5 +1,7 @@
+@use '@finastra/fds-theme' as fds;
+
 .box{
-    background-color: var(--fds-secondary-lighter);
+    @include fds.property(background-color,  secondary-lighter);
     display: flex;
     border-radius: 4px;
     padding-top: 1%;
@@ -9,14 +11,14 @@
 }
 
 .box-title{
-    padding-left: var(--fds-spacing-3);
-    font: var(--fds-body-2);
-    color: var(--fds-primary);
+    @include fds.padding(3, left);
+    @include fds.typography(body-2);
+    @include fds.property(color,  primary);
 }
 
 .box-icon{
-    color: var(--fds-primary);
-    padding-left: var(--fds-spacing-4);
+    @include fds.property(color,  primary);
+    @include fds.padding(4, left);
     display: flex;
 }
 

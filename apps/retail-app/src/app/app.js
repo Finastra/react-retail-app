@@ -142,11 +142,11 @@ const getAccounts = useCallback(async () => {
                 {firstName === "" ? <fds-skeleton/> : <span> Welcome Back, {firstName}</span>}
               </div>
             </div>
-          </div>
+          </div> 
           <div className="cards">
             {accounts.length === 0 ? 
               <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6} loading>
-               { [...Array(n)].map((e, i) =>
+               { [...Array(n)].map(() =>
                     <div className="card">
                       <AccountSkeleton/>
                     </div>

@@ -1,3 +1,5 @@
+@use '@finastra/fds-theme' as fds;
+
 .carousel-container {
     width: 100%;
     height: 100%;
@@ -9,8 +11,7 @@
 .carousel-wrapper {
     display: flex;
     position: relative;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    @include fds.padding(3, top, bottom);
 }
 
 .carousel-content-wrapper {
@@ -59,8 +60,8 @@
 }
 
 .carousel-buttons{
-    padding: 12px;
-    padding-right: 24px;
+    @include fds.padding(3);
+    @include fds.padding(4, right);
     min-height: 40px;
 }
 
@@ -73,9 +74,8 @@
 }
 
 .button-icon{
-    color: var(--fds-background);
+    @include fds.text-color(background);
 }
-
 
 html,
 body {

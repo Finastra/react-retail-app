@@ -25,7 +25,9 @@ function Transaction({
                   {accNumber} 
                 </div> 
               </div>
-              $ {amount} 
+              <div className="transaction-amount">
+                $ {amount} 
+              </div>
             </div>
           </div>
         </div>
