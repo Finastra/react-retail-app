@@ -147,7 +147,7 @@ const getAccounts = useCallback(async () => {
           </div> 
           <div className="cards">
             {accounts.length === 0 ? 
-              <Carousel show={ !sm ? 0 : !md ? 1 : !lg ? 2 : !xl ? 3 : !xll ? 4 : !xlll ? 5 : 6 }>
+              <Carousel show={ !sm ? 0 : !md ? 1 : !lg ? 2 : !xl ? 3 : !xll ? 4 : !xlll ? 5 : 6 } loading>
                { [...Array(n)].map(() =>
                     <div className="card">
                       <AccountSkeleton/>
