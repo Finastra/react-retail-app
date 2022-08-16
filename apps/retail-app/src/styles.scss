@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@finastra/fds-theme' as fds;
+@use '@finastra/fds-theme/dark' with ($class: 'dark-theme');
 
 body {
     @include fds.use-light-theme();
@@ -9,18 +10,6 @@ body {
 @media (prefers-color-scheme: dark) {
     body {
       @include fds.use-dark-theme();
-      
-      .app-title{
-        @include fds.use-light-theme();
-      }
-  
-      .welcome-msg{
-        @include fds.use-light-theme();
-      }
-
-      .button-icon{
-        @include fds.use-light-theme();
-    }
     }
   }
   

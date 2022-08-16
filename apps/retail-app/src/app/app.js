@@ -42,11 +42,12 @@ export function App() {
   const theme = createTheme({
     breakpoints: {
       values: {
-        sm: 700,
-        md: 1011,
-        lg: 1350,
-        xl: 1950,
-        xll: 2000,
+        sm: 290,
+        md: 580,
+        lg: 870,
+        xl: 1160,
+        xll: 1450,
+        xlll: 1740,
       },
     },
   });
@@ -56,8 +57,9 @@ export function App() {
   const lg = useMediaQuery(theme.breakpoints.up('lg'));
   const xl = useMediaQuery(theme.breakpoints.up('xl'));
   const xll = useMediaQuery(theme.breakpoints.up('xll'));
+  const xlll = useMediaQuery(theme.breakpoints.up('xlll'));
 
-  const n = 6;
+  const n = 7;
 
   const getProfile = useCallback(async () => {
     try {
@@ -132,7 +134,7 @@ const getAccounts = useCallback(async () => {
           <mwc-icon-button icon="more_vert" slot="actions"></mwc-icon-button>
         </fds-app-bar>
         <div className="header">
-          <div className="header-title">
+          <div className="header-title dark-theme">
             <div className="header-icon">
               <img width={64} height={64} src={require("../assets/Header-Icon.png")}/>
             </div>
@@ -145,14 +147,14 @@ const getAccounts = useCallback(async () => {
           </div> 
           <div className="cards">
             {accounts.length === 0 ? 
-              <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6} loading>
+              <Carousel show={ !sm ? 0 : !md ? 1 : !lg ? 2 : !xl ? 3 : !xll ? 4 : !xlll ? 5 : 6 }>
                { [...Array(n)].map(() =>
                     <div className="card">
                       <AccountSkeleton/>
                     </div>
                )}
               </Carousel> : 
-              <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6} >
+              <Carousel show={ !sm ? 0 : !md ? 1 : !lg ? 2 : !xl ? 3 : !xll ? 4 : !xlll ? 5 : 6 } >
                 {accounts.map(account => {
                   return(
                   <div className="card">
@@ -183,6 +185,7 @@ const getAccounts = useCallback(async () => {
             </Grid>
           </div>
         </div>
+        
       </div>
       </fds-sidenav>
     </div>

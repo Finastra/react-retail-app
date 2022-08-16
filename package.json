@@ -28,6 +28,7 @@
     "@finastra/dialog": "^0.0.37",
     "@finastra/divider": "^0.0.37",
     "@finastra/fds-theme": "^0.0.37",
+    "@finastra/icon-button": "^0.0.39",
     "@finastra/launchpad": "^0.0.37",
     "@finastra/logo": "^0.0.37",
     "@finastra/nestjs-logger": "^0.4.0",

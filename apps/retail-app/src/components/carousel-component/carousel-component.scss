@@ -24,30 +24,7 @@
     transition: all 500ms linear;
     -ms-overflow-style: none;  
     scrollbar-width: none; 
-}
-
-.carousel-content.show-1 > * {
-    width: 100%;
-}
-
-.carousel-content.show-2 > * {
-    width: 50%;
-}
-
-.carousel-content.show-3 > * {
-    width: 33.33%;
-}
-
-.carousel-content.show-4 > * {
-    width: 25%;
-}
-
-.carousel-content.show-5 > * {
-    width: 20%;
-}
-
-.carousel-content.show-6 > * {
-    width: 16.67%;
+    width: 290px;
 }
 
 .carousel-content::-webkit-scrollbar, .carousel-content::-webkit-scrollbar {
@@ -63,18 +40,12 @@
     @include fds.padding(3);
     @include fds.padding(4, right);
     min-height: 40px;
-}
-
-.left-arrow, .right-arrow {
-    float: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .left-arrow.loading, .right-arrow.loading{
     display: none;
-}
-
-.button-icon{
-    @include fds.text-color(background);
 }
 
 html,
