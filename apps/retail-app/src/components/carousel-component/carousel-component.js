@@ -56,8 +56,10 @@ const Carousel = (props) => {
     return (
         <div {...handlers} className="carousel-container">
             <div className="carousel-buttons dark-theme">
-                { <fds-icon-button className={`left-arrow ${loading && "loading"} ${disabledLeft && "dark-theme"}`} onClick={prev} icon="chevron_left" disabled={disabledLeft}></fds-icon-button> }   
-                { <fds-icon-button className={`right-arrow ${loading && "loading"} ${disabledRight && "dark-theme"}`} onClick={next} icon="chevron_right" disabled={disabledRight}></fds-icon-button> }
+                <div className={`${loading && "loading"}`}>
+                    { <fds-icon-button className={`left-arrow ${loading && "loading"} ${disabledLeft && "dark-theme"}`} onClick={prev} icon="chevron_left" disabled={disabledLeft}></fds-icon-button> }   
+                    { <fds-icon-button className={`right-arrow ${loading && "loading"} ${disabledRight && "dark-theme"}`} onClick={next} icon="chevron_right" disabled={disabledRight}></fds-icon-button> }
+                </div>
             </div>
             <div className="carousel-wrapper"> 
                 <div className="carousel-content-wrapper">
