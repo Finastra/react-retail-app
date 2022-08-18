@@ -21,7 +21,7 @@
 
 ## 📸 User Interface
 
-![view1](/assets/View1.PNG)![view2](/assets/View2.PNG)![view3](assets/View3.PNG)![view4](/assets/View4.PNG)![view5](/assets/View5.PNG)![view6](assets/View6.PNG)![view7](/assets/View7.PNG)![view8](/assets/View8.PNG)
+![view1](/assets/View1.PNG)![view2](/assets/View2.PNG)![view3](assets/View3.PNG)![view4](/assets/View4.PNG)![view5](/assets/View5.PNG)![view6](assets/View6.PNG)![view7](/assets/View7.PNG)
 
 <br>
 
