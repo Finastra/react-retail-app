@@ -14,7 +14,7 @@
 </p>
 
 <div align="center">
-    Build with ❤️ using <b>Finastra Design System</b>
+    Built with ❤️ using <b>Finastra Design System</b>
 </div>
 
 <br>
@@ -65,19 +65,15 @@ npm nx serve api
 
 <h3>
 Client
-<img src="https://angular.io/assets/images/logos/angular/angular.svg" height="15" alt="Angular Logo" />
+<img src="https://raw.githubusercontent.com/reactjs/reactjs.org/main/src/icons/logo.svg" alt="Angular Logo" height="15"/>
 </h3>
 
 - Strict mode
-- Lazy loading
 - Smart and pure components pattern
 - Self-contained components and encapsulated modules
 - Components types (e.g. component, features)
 - Amazing directory structure
-- Unit tests with Jest instead of Karma & Jasmine
 - Dark mode
-- Migration from TSLint to ESLint
-- GitHub Actions workflows for unit tests and build
   <!-- - Dynamic titles and content meta tags -->
   <!-- - PWA -->
   <!-- - i18n -->
