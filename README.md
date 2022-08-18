@@ -21,8 +21,9 @@
 
 ## 📸 User Interface
 
-![view1](/assets/View1.PNG)![view2](/assets/View2.PNG)![view3](assets/View3.PNG)![view4](/assets/View4.PNG)![view5](/assets/View5.PNG)![view6](assets/View6.PNG)![view7](/assets/View7.PNG)
+![Animation](/assets/Animation.gif)
 
+<br>
 <br>
 
 
@@ -31,29 +32,9 @@
 > 👉 [ReactRetailApp](https://react-retail-app.herokuapp.com/)
 
 <br>
-
-## 🚀 Quick Start
-
-```bash
-npm install
-
-```
-
-### Build the UI first
-
-```bash
-npm nx build retail-app
-
-```
-
-### Seve the API
-
-```bash
-npm nx serve api
-
-```
-
 <br>
+
+
 
 ## 🗺 Architectural Diagram
 
@@ -88,6 +69,48 @@ Server
 - Auth ready
 
 <br>
+<br>
+
+## Installation
+
+1. [Register an application on FFDC](https://medium.com/finastra-fintechs-devs/create-an-application-on-finastras-developer-portal-d90ef266cafb)
+
+You need to register an application on [FusionFabric.cloud Developer Portal](https://developer.fusionfabric.cloud) and select the following APIs:
+
+- [Account and Balances - B2C](https://developer.fusionfabric.cloud/api/corporate-accounteinfo-me-v1-831cb09d-cc10-4772-8ed5-8a6b72ec8e01/docs) 
+- [Consumer Profile](https://developer.fusionfabric.cloud/api/b2c-profile-v1-93a6ef22-0aa6-43f1-9624-f33ee8022e49/docs)
+- [Person to Person Paymenys](https://developer.fusionfabric.cloud/api/b2c-p2p-v1-0ff75e33-5086-40d8-acb2-85d6a4a07698/docs)
+
+2. Setup environment variables
+
+Rename `.env.template` to `.env` and setup `OIDC_CLIENT_ID` , `OIDC_CLIENT_SECRET` , `OIDC_CLIENT_ID_B2B` and `OIDC_CLIENT_SECRET_B2B` from the application created at step 1. 👌🏼
+
+3. Run `npm i`
+
+<br>
+<br>
+
+## Build
+
+This application contains 2 applications:
+
+- React Application
+- NestJs Application
+
+
+So you need to run the following 2 commands:
+
+```
+npm run dev              # client build in watch mode
+npm run start:server     # server build in watch mode
+```
+
+Go to http://localhost:3000 and enjoy your demo application 😊
+
+> To build for production, use `npm run build`, which will build both the client and server, and then `npm run start` which will run the application!
+
+<br>
+<br>
 
 ## Environement variables
 
@@ -102,17 +125,18 @@ Server
 | `FFDC`                    | `"https://api.fusionfabric.cloud"`                    |
 
 
-> Duplicate the `.env.template` and rename it to .env 👌🏼
-
+<br>
 <br>
 
 ## Logging in
 
-| Variable                  | Default value           |
+| Username                  | Password                |
 | :-------------            | :---------------------- |
 | `ffdcuser1`               | `123456`                |
 | `ffdcuser2`               | `123456`                |
 
+<br>
+<br>
 
 ## 🧙‍♂️ Commands
 
@@ -122,8 +146,7 @@ Server
 | `dev`          | Builds client in watch mode                                |
 | `start:server` | Builds the server in watch mode                            |
 | `start`        | Builds the client and then starts the server in watch mode |
-| `build:prod`   | Builds both client and server in production mode           |
-| `test:cov`     | Run test and outptus coverage                              |
+| `build`   | Builds both client and server in production mode           |
 
 <br>
 
@@ -159,7 +182,7 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 
 - [Finastra's Developer Portal](https://developer.fusionfabric.cloud/documentation)
 - [Finastra's Design System](https://design.fusionfabric.cloud)
-- [Angular Documentation](https://angular.io/docs)
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
 - [NestJS Documentation](https://docs.nestjs.com/)
 - [Nx Documentation](https://nx.dev/angular)
 
