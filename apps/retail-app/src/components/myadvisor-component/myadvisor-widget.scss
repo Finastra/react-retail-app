@@ -1,29 +1,32 @@
+@use '@finastra/fds-theme' as fds;
+
 .myadvisor{
     width: 100%;
-    height: 328px;;
+    height: 100%;
     border-radius: 4px;
-    background-color: var(--fds-surface);;
-    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    @include fds.property(background-color, surface);
+    @include fds.property(border-color, outline);
+    @include fds.elevation(4);
     overflow: hidden;
 }
 
 
 .myadvisor-content{
-    padding: 24px;
+    @include fds.padding(4);
     border-radius: 4px;
-    background-color: var(--fds-surface-selected);
+    @include fds.property(background-color, surface-selected);
     border-bottom: 1px solid;
-    border-color: rgb(217, 218, 217);
+    @include fds.property(border-color, outline);
     height: 100px;
 }
 
 .myadvisor-title{
-    font: var(--fds-headline-5);
-    color: var(--fds-on-background);
+    @include fds.typography(headline-5);
+    @include fds.property(color, on-background);
 }
 
 .advisor{
-    padding-top: 40px;
+    @include fds.padding(4, top, bottom);
     display: flex;
 }
 
@@ -31,20 +34,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 12px;
+    @include fds.padding(3, left);
 }
 
 .advisor-name{
-    font: var(--fds-subtitle-3);
+    @include fds.typography(subtitle-3);
 }
 
 .advisor-email{
-    font: var(--fds-body-3);
+    @include fds.typography(body-3);
 }
 
 .actionbuttons{
-    padding-top: 24px;
-    padding-left: 4px;
+    @include fds.padding(4, top, bottom);
+    @include fds.padding(1, left);
 }
 
 fds-text-button{

@@ -41,17 +41,15 @@ body {
 
       .header {
         background: url("../assets/Background.png") no-repeat;
-        height: 350px;
+        height: 100%;
         background-size: cover;
         @include fds.property(background-color,  background);
         width: 100%;
       }
 
       .header-title{
-        padding: 32px;
-        padding-top:48px;
-        height: 70px;
-        width: 300px;
+        @include fds.padding(5);
+        @include fds.padding(6, top);
       }
 
       .header-icon{
@@ -61,13 +59,13 @@ body {
       .app-title{
         float: left;
         margin-left: 10px;
-        font: var(--fds-headline-3);
-        color: var(--fds-surface);
+        @include fds.typography(headline-3);
+        @include fds.text-color(on-surface);
       }
 
       .welcome-msg{
         @include fds.typography(body-1);
-        @include fds.text-color(surface);
+        @include fds.text-color(on-surface);
       }
 
       .content{
@@ -95,11 +93,6 @@ body {
       .card{
         display: flex;
         justify-content: center;
-      }
-
-      fds-skeleton{
-        --fds-skeleton-width:
-        --fds-skeleton-height:
       }
 
 }

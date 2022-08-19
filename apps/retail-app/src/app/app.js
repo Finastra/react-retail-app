@@ -42,19 +42,24 @@ export function App() {
   const theme = createTheme({
     breakpoints: {
       values: {
-        sm: 700,
-        md: 1011,
-        lg: 1350,
-        xl: 1950,
-        xll: 2000,
+        sm: 290,
+        md: 580,
+        lg: 870,
+        xl: 1160,
+        xll: 1450,
+        xlll: 1740,
       },
     },
   });
+
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const lg = useMediaQuery(theme.breakpoints.up('lg'));
   const xl = useMediaQuery(theme.breakpoints.up('xl'));
   const xll = useMediaQuery(theme.breakpoints.up('xll'));
+  const xlll = useMediaQuery(theme.breakpoints.up('xlll'));
+
+  const n = 7;
 
   const getProfile = useCallback(async () => {
     try {
@@ -129,26 +134,35 @@ const getAccounts = useCallback(async () => {
           <mwc-icon-button icon="more_vert" slot="actions"></mwc-icon-button>
         </fds-app-bar>
         <div className="header">
-          <div className="header-title">
+          <div className="header-title dark-theme">
             <div className="header-icon">
               <img width={64} height={64} src={require("../assets/Header-Icon.png")}/>
             </div>
             <div className="app-title">
               <span>Retail app</span>
               <div className="welcome-msg">
-                <span> Welcome Back, {firstName}</span>
+                {firstName === "" ? <fds-skeleton/> : <span> Welcome Back, {firstName}</span>}
               </div>
             </div>
-          </div>
+          </div> 
           <div className="cards">
-            <Carousel show={ !sm ? 1 : !md ? 3 : !lg ? 4 : !xl ? 5 : !xll ? 6 : 6}>
-              {accounts.map(account => {
-                return(
-                <div className="card">
-                  <fds-account-card name={account.nickname} balance={account.balances[0].amount} number={account.accountNumber} currency="USD"/>
-                </div>)
-              })}
-            </Carousel>
+            {accounts.length === 0 ? 
+              <Carousel show={ !sm ? 0 : !md ? 1 : !lg ? 2 : !xl ? 3 : !xll ? 4 : !xlll ? 5 : 6 } loading>
+               { [...Array(n)].map(() =>
+                    <div className="card">
+                      <AccountSkeleton/>
+                    </div>
+               )}
+              </Carousel> : 
+              <Carousel show={ !sm ? 0 : !md ? 1 : !lg ? 2 : !xl ? 3 : !xll ? 4 : !xlll ? 5 : 6 } >
+                {accounts.map(account => {
+                  return(
+                  <div className="card">
+                    <fds-account-card name={account.nickname} balance={account.balances[0].amount} number={account.accountNumber} currency="USD"/>
+                  </div>)
+                })}
+              </Carousel>
+            }
           </div>
         </div>
         <div className="content">
@@ -171,6 +185,7 @@ const getAccounts = useCallback(async () => {
             </Grid>
           </div>
         </div>
+        
       </div>
       </fds-sidenav>
     </div>

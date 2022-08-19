@@ -1,8 +1,35 @@
-.skeleton-container{
-    width: 230px;
-    height: 137px;
-    padding: 16px;
+@use '@finastra/fds-theme' as fds;
+
+.skeleton-content{
+    display: flex;
+    gap: var(--fds-spacing-2, 8px);
+    margin-bottom: var(--fds-spacing-3, 16px);
 }
+
+.skeleton-icon{
+    margin-top: var(--fds-spacing-1, 4px);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include fds.bg-color(primary-lighter);
+}
+
+.skeleton-info{
+    min-width: 152px;
+}
+
+.skeleton-balance{
+    margin-top: var(--fds-spacing-4, 24px);
+}
+
+.skeleton-number{
+    @include fds.padding-y(2);
+    @include fds.padding-x(3);
+}
+
 
 html,
 body {

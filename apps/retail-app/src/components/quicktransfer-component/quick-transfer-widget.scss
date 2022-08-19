@@ -1,19 +1,21 @@
+@use '@finastra/fds-theme' as fds;
+
 .quick-transfer{
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    background-color: var(--fds-surface);;
-    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    @include fds.property(background-color,  surface);
+    @include fds.elevation(4);
 }
 
 .quick-transfer-content{
-    padding: 24px;
+    @include fds.padding(4);
     overflow: auto;
 }
 
 .quick-transfer-title{
-    font: var(--fds-headline-5);
-    color: var(--fds-on-background);
+    @include fds.typography(headline-5);
+    @include fds.text-color(on-background);
 }
 
 .quick-transer-inputs{
@@ -23,8 +25,7 @@
 }
 
 .sendto{
-    padding-top: 24px;
-    padding-bottom: 24px;
+    @include fds.padding(4, top, bottom);
     width: 100%;
     height: 100%;
     position: relative;
@@ -38,7 +39,7 @@
 
 .button{
     float: right;
-    padding-top: 24px;
+    @include fds.padding(4, top);
 }
 
 .dropdown{
@@ -52,16 +53,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--fds-surface-selected);
+    @include fds.bg-color(surface-selected);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--fds-surface);
+    @include fds.bg-color(surface);
 }
 
 fds-select{
-    padding-bottom: 24px;
+    @include fds.padding(4, bottom);
     width: 100%;
 }
 
