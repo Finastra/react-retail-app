@@ -176,7 +176,7 @@ function Sheet() {
             </Grid>
             <Grid item xs={12} md={4} >
               <div className="search-input">
-                <fds-search-input value={desc} onInput={filterTransactions} showClearButton={false}></fds-search-input>
+                <fds-search-input value={desc} onInput={filterTransactions}></fds-search-input>
               </div>
             </Grid>
             <Grid item xs={12} md={12}>
