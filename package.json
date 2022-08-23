@@ -9,8 +9,7 @@
     "start:server": "nx serve api",
     "dev": "nx build retail-app --watch",
     "test": "nx test",
-    "build": "nx build api && nx build retail-app",
-    "postdeploy": "echo $HEROKU_APP_NAME"
+    "build": "nx build api && nx build retail-app"
   },
   "private": true,
   "dependencies": {
