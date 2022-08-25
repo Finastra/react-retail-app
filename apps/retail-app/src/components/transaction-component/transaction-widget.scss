@@ -27,9 +27,8 @@
 }
 
 .transaction-list{
-    @include fds.padding(4, top);
     display: none;
-    max-height: 800px;    
+    max-height: 1000px;   
 }
 
 .scrollable:hover{
@@ -60,18 +59,17 @@
     justify-content: flex-end
 }
 
-::-webkit-scrollbar {
+.scrollable:hover::-webkit-scrollbar {
     width: 10px;
-    height: 10px;
-    
+    height: 5px;
 }
 
-::-webkit-scrollbar-thumb {
+.scrollable:hover::-webkit-scrollbar-thumb {
     @include fds.bg-color(surface-selected);
     border-radius: 4px;
 }
 
-::-webkit-scrollbar-track {
+.scrollable:hover::-webkit-scrollbar-track {
     @include fds.bg-color(surface);
 }
 

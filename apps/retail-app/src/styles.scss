@@ -4,6 +4,10 @@
 
 body {
     @include fds.use-light-theme();
+    @include fds.bg-color(background);
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 
 }
 
@@ -33,14 +37,21 @@ body {
             font: var(--fds-body-3);
         } 
 
-        .icon{
-            height: 24px;
-            width: 24px;
-            border-radius: 24px;
+        .transaction-item{
+            padding: 5%;
         }
 
-        .material-icons{
-            font-size: 12px;
+        .main-content{
+            padding-right: 5%;
+            padding-left: 5%;
+        }
+
+        .sheet-item{
+            @include fds.padding(3);
+        }
+
+        .transaction-list{
+            max-height: 400px;
         }
     }
     

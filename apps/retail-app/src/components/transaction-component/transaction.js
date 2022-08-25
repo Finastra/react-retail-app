@@ -1,5 +1,6 @@
 import './transaction.scss';
-import '@finastra/divider'
+import '@finastra/divider';
+import '@finastra/icon';
 
 function Transaction({
     title,
@@ -12,23 +13,21 @@ function Transaction({
   return (
     <div className="transaction"> 
         <div className="transaction-item">
-          <div className="icon">
-            <span className="material-icons">
-              width_normal
-            </span>
-          </div>
-          <div className="transaction-name">
-            <div className="transaction-title">
-              <div className="transaction-info">
-                {title}
-                <div className="transaction-subtitle">
-                  {accNumber} 
-                </div> 
-              </div>
-              <div className="transaction-amount">
-                $ {amount} 
-              </div>
+          <div>
+            <div className="icon">  
+              <fds-icon dense="">payments</fds-icon>
             </div>
+          </div>
+            <div className="transaction-info">
+              <div className="transaction-desc">
+                {title}
+              </div>
+              <div className="transaction-subtitle">
+                {accNumber} 
+              </div> 
+            </div>
+          <div className="transaction-amount">
+            $ {amount} 
           </div>
         </div>
         {!last && <fds-divider/>}

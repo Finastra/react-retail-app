@@ -21,8 +21,8 @@ function Sheet() {
   const handleClick = (index) => setActiveIndex(index);
   const checkActive = (index, className) => activeIndex === index ? className : "";
 
-  let [transactions, setTransactions] = useState([]);
-  let [foundTransactions, setFoundTransactions] = useState([]);
+  let [transactions, setTransactions] = useState({});
+  let [foundTransactions, setFoundTransactions] = useState({});
   let [desc, setDesc] = useState("");
    
   const getTransactions = useCallback(async () => {
@@ -163,9 +163,9 @@ function Sheet() {
           <span className="title">Transactions</span>
         </div>
         <div className="layout">
-          <Grid container spacing={2}>
+          <Grid container spacing={{ xs: 2, md: 4}}>
             <Grid item xs={12} md={8} className="button-toggle">
-              <fds-button-toggle-group >
+              <fds-button-toggle-group dense>
                 <fds-button-toggle label="All" className={`tab ${checkActive(1, "active")}`}
           onClick={() => handleClick(1)}></fds-button-toggle>
                 <fds-button-toggle label="Income" className={`tab ${checkActive(2, "active")}`}
@@ -176,31 +176,34 @@ function Sheet() {
             </Grid>
             <Grid item xs={12} md={4} >
               <div className="search-input">
-                <fds-search-input value={desc} onInput={filterTransactions}></fds-search-input>
+                <fds-search-input dense value={desc} onInput={filterTransactions}></fds-search-input>
               </div>
             </Grid>
             <Grid item xs={12} md={12}>
-              {transactions.length == 0 && (
-                  <div className="progress">
-                    <div className="progress-bar">
-                      <fds-circular-progress indeterminate></fds-circular-progress>
-                      <div className="progress-bar-text">
-                        <span>Loading...</span>
-                      </div>
+              {Object.keys(transactions).length == 0 ?
+                <div className="progress">
+                  {console.log(transactions)}
+                  <div className="progress-bar">
+                    <fds-circular-progress indeterminate></fds-circular-progress>
+                    <div className="progress-bar-text">
+                      <span>Loading...</span>
                     </div>
                   </div>
-              )}
-              <div className="scrollable">
-                <div className={`transaction-list ${checkActive(1, "active")}`}>
-                  {all}
+                </div> :
+                <div>
+                  <div className="scrollable">
+                    <div className={`transaction-list ${checkActive(1, "active")}`}>
+                      {all}
+                    </div>
+                    <div className={`transaction-list ${checkActive(2, "active")}`}>
+                      {income}
+                    </div>
+                    <div className={`transaction-list ${checkActive(3, "active")}`}>
+                      {expense}
+                    </div>
+                  </div>
                 </div>
-              </div>
-                <div className={`transaction-list ${checkActive(2, "active")}`}>
-                  {income}
-                </div>
-                <div className={`transaction-list ${checkActive(3, "active")}`}>
-                  {expense}
-                </div>
+                }
             </Grid>
           </Grid>
         </div>

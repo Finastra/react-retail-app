@@ -1,5 +1,5 @@
 import './date-item.scss';
-import { CalendarToday } from '@mui/icons-material';
+import '@finastra/icon';
 
 
 function DateItem({
@@ -9,7 +9,7 @@ function DateItem({
     <div className="date-item"> 
         <div className="box">
           <div className="box-icon">
-            <CalendarToday fontSize="small" />
+            <fds-icon dense="">calendar_today</fds-icon>
           </div>
           <div className="box-title">
               <span>{date}</span>

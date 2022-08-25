@@ -4,14 +4,15 @@ import '@finastra/app-bar';
 import '@finastra/button';
 import '@finastra/user-profile';
 import '@finastra/dialog';
-import '@material/mwc-icon-button';
+import '@finastra/icon-button'; 
+import '@finastra/icon';
 import '@finastra/sidenav';
 import '@finastra/logo';
-import '@material/mwc-list';
 import '@finastra/logo';
 import '@finastra/checkbox';
 import '@finastra/account-card';
 import '@finastra/skeleton';
+import '@finastra/list';
 import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
@@ -42,12 +43,12 @@ export function App() {
   const theme = createTheme({
     breakpoints: {
       values: {
-        sm: 290,
-        md: 580,
-        lg: 870,
-        xl: 1160,
-        xll: 1450,
-        xlll: 1740,
+        sm: 270,
+        md: 540,
+        lg: 810,
+        xl: 1080,
+        xll: 1350,
+        xlll: 1620,
       },
     },
   });
@@ -98,32 +99,32 @@ const getAccounts = useCallback(async () => {
           <fds-logo></fds-logo>
         </div>
         <div className="fds-sidenav-list">
-          <mwc-list activatable="">
-            <mwc-list-item selected="" activated="" graphic="icon">
+          <fds-list activatable="">
+            <fds-list-item selected="" graphic="icon">
               <span>Home</span>
-              <mwc-icon slot="graphic">home</mwc-icon>
-            </mwc-list-item>
-            <mwc-list-item graphic="icon">
+              <fds-icon slot="graphic">home</fds-icon>
+            </fds-list-item>
+            <fds-list-item graphic="icon">
               <span>Applications</span>
-              <mwc-icon slot="graphic">dashboard</mwc-icon>
-            </mwc-list-item>
-            <mwc-list-item graphic="icon">
+              <fds-icon slot="graphic">dashboard</fds-icon>
+            </fds-list-item>
+            <fds-list-item graphic="icon">
               <span>Tools</span>
-              <mwc-icon slot="graphic">extension</mwc-icon>
-            </mwc-list-item>
-            <mwc-list-item graphic="icon">
+              <fds-icon slot="graphic">extension</fds-icon>
+            </fds-list-item>
+            <fds-list-item graphic="icon">
               <span>Settings</span>
-              <mwc-icon slot="graphic">settings</mwc-icon>
-            </mwc-list-item>
-          </mwc-list>
+              <fds-icon slot="graphic">settings</fds-icon>
+            </fds-list-item>
+          </fds-list>
         </div>
       </div>
       <div slot="appContent">
         <fds-app-bar logoredirecturi="">
-          <mwc-icon-button icon="menu" slot="navigationIcon"></mwc-icon-button>
-          <mwc-icon-button icon="search" slot="actions"></mwc-icon-button>
-          <mwc-icon-button icon="notifications_none" slot="actions"></mwc-icon-button>
-          <mwc-icon-button icon="help_outline" slot="actions"></mwc-icon-button>
+          <fds-icon-button icon="menu" slot="navigationIcon"></fds-icon-button>
+          <fds-icon-button icon="search" slot="actions"></fds-icon-button>
+          <fds-icon-button icon="notifications_none" slot="actions"></fds-icon-button>
+          <fds-icon-button icon="help_outline" slot="actions"></fds-icon-button>
           <fds-user-profile slot="actions" username={fullName}>
           <div slot="userInfo">{email}</div>
           <div slot="actions">
@@ -131,7 +132,7 @@ const getAccounts = useCallback(async () => {
             <fds-button text="" fullwidth="" label="View profile"></fds-button>
           </div>
           </fds-user-profile>
-          <mwc-icon-button icon="more_vert" slot="actions"></mwc-icon-button>
+          <fds-icon-button icon="more_vert" slot="actions"></fds-icon-button>
         </fds-app-bar>
         <div className="header">
           <div className="header-title dark-theme">
