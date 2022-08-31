@@ -136,7 +136,7 @@ const getAccounts = useCallback(async () => {
         </fds-app-bar>
         <div className="header">
           <div className="header-pattern">
-            <img src={require("../assets/Header-Pattern.png")}/>
+            <img src={require("../assets/Header-pattern.png")}/>
           </div>
           <div className="header-title dark-theme">
             <img width={64} height={64} src={require("../assets/Header-Icon.png")}/>
