@@ -75,7 +75,7 @@ fds-autocomplete{
 }
 
 fds-select{
-    --fds-menu-max-height: 150px;
+    @include fds.padding(2, top);
 }
 
 

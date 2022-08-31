@@ -60,6 +60,7 @@ body {
 
         .sheet-item{
             @include fds.padding(3);
+            @include fds.padding(5, bottom);
         }
 
         .transaction-list{

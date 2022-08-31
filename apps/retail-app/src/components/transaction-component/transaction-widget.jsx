@@ -8,6 +8,9 @@ import { useState, useCallback } from 'react';
 import { Grid } from '@mui/material';
 import DateItem from './date-item.jsx';
 import Transaction from './transaction.jsx';
+import { createTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 
 function Sheet() {
@@ -20,6 +23,16 @@ function Sheet() {
   const [activeIndex, setActiveIndex] = useState(1);
   const handleClick = (index) => setActiveIndex(index);
   const checkActive = (index, className) => activeIndex === index ? className : "";
+
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        custom_sm: 415,
+      },
+    },
+  });
+
+  const custom_sm = useMediaQuery(theme.breakpoints.up('sm'));
 
   let [transactions, setTransactions] = useState({});
   let [foundTransactions, setFoundTransactions] = useState({});
@@ -164,7 +177,7 @@ function Sheet() {
         </div>
         <div className="layout">
           <Grid container spacing={{ xs: 2, md: 4}}>
-            <Grid item xs={12} md={8} className="button-toggle">
+            <Grid item xs={12} md={8} className="button-toggle" pb={{ md: 4}}>
               <fds-button-toggle-group dense>
                 <fds-button-toggle label="All" className={`tab ${checkActive(1, "active")}`}
           onClick={() => handleClick(1)}></fds-button-toggle>
@@ -174,15 +187,14 @@ function Sheet() {
           onClick={() => handleClick(3)}></fds-button-toggle>
               </fds-button-toggle-group>
             </Grid>
-            <Grid item xs={12} md={4} >
+            <Grid item xs={12} md={4} pb={{ xs: 2, md: 4 }}>
               <div className="search-input">
                 <fds-search-input dense value={desc} onInput={(e) => filterTransactions(e)}></fds-search-input>
               </div>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={12} style={{ overflowY: "scroll", maxHeight: `${!custom_sm ? "1000px": "400px"}`, paddingTop: "0px"}}>
               {Object.keys(transactions).length == 0 ?
                 <div className="progress">
-                  {console.log(transactions)}
                   <div className="progress-bar">
                     <fds-circular-progress indeterminate></fds-circular-progress>
                     <div className="progress-bar-text">
@@ -191,16 +203,14 @@ function Sheet() {
                   </div>
                 </div> :
                 <div>
-                  <div className="scrollable">
-                    <div className={`transaction-list ${checkActive(1, "active")}`}>
-                      {all}
-                    </div>
-                    <div className={`transaction-list ${checkActive(2, "active")}`}>
-                      {income}
-                    </div>
-                    <div className={`transaction-list ${checkActive(3, "active")}`}>
-                      {expense}
-                    </div>
+                  <div className={`transaction-list ${checkActive(1, "active")}`}>
+                    {all}
+                  </div>
+                  <div className={`transaction-list ${checkActive(2, "active")}`}>
+                    {income}
+                  </div>
+                  <div className={`transaction-list ${checkActive(3, "active")}`}>
+                    {expense}
                   </div>
                 </div>
                 }

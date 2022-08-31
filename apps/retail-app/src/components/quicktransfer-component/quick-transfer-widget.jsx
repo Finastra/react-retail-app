@@ -30,7 +30,7 @@ function QuickTransfer() {
   let [payee, setPayee] = useState(null);
   let [amount, setAmount] = useState(null);
   let [accounts, setAccounts] = useState([]);
-  let [account, setAccount] = useState("");
+  let [account, setAccount] = useState(null);
   let [memo, setMemo] = useState("");
   let [response, setResponse] = useState(null);
   let [isChecked, setIsChecked] = useState(false);
@@ -145,6 +145,7 @@ function QuickTransfer() {
   }
 
   async function handlePayment (){
+    console.log(account);
     if (account !== null){
       let response = await makeTransfer();
       setOpenDialog(null);
@@ -258,7 +259,7 @@ function QuickTransfer() {
       <fds-dialog open={openDialog} heading="Payment Confirmation" scrimClickAction="">
         <p> Payee: <strong>{payee ? payee.payeeName : null}</strong> </p>
         <p> Amount: <strong>{amount} $</strong></p>
-        <fds-select outlined="" icon="payments">
+        <fds-select outlined="" icon="payments" label="Account...">
           {accounts.map((account) => 
             <mwc-list-item value={account.accountId} onClick={e => itemClickAcc(e.target.value)}>{account.nickname}</mwc-list-item>
           )}
