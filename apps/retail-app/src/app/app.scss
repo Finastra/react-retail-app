@@ -38,15 +38,19 @@ fds-user-profile fds-button + fds-button {
   background-size: cover;
   @include fds.property(background-color,  background);
   width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .header-title{
   @include fds.padding(5);
-  @include fds.padding(6, top);
+  display: flex;
+  align-items: center;
 }
 
-.header-icon{
-  float: left;
+.header-pattern{
+  position: absolute;
+  right: 0px;
 }
 
 .app-title{

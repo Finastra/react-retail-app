@@ -23,6 +23,10 @@ body {
         .search-input{
             justify-content: flex-start;
         }
+
+        .header-pattern {
+            right: -170px;
+        }
     }
     
 }
@@ -53,6 +57,10 @@ body {
 
         .transaction-list{
             max-height: 400px;
+        }
+
+        .header-pattern {
+            right: -240px;
         }
     }
     

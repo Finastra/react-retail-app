@@ -6,8 +6,8 @@ import '@finastra/circular-progress';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
 import { Grid } from '@mui/material';
-import DateItem from './date-item.js';
-import Transaction from './transaction.js';
+import DateItem from './date-item.jsx';
+import Transaction from './transaction.jsx';
 
 
 function Sheet() {
@@ -135,6 +135,7 @@ function Sheet() {
 
   const filterTransactions = (e) => {
     const keyword = e.target.value;
+    setDesc(keyword);
 
     if (keyword != '') {
       const results = {}
@@ -148,7 +149,6 @@ function Sheet() {
     } else {
       setFoundTransactions(transactions);
     }
-    setDesc(keyword);
   }
 
   useEffect(() => {
@@ -176,7 +176,8 @@ function Sheet() {
             </Grid>
             <Grid item xs={12} md={4} >
               <div className="search-input">
-                <fds-search-input dense value={desc} onInput={filterTransactions}></fds-search-input>
+                <fds-search-input dense value={desc} onInput={(e) => filterTransactions(e)}></fds-search-input>
+                <span>{desc}</span>
               </div>
             </Grid>
             <Grid item xs={12} md={12}>

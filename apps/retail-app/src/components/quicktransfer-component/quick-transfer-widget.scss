@@ -67,7 +67,11 @@ fds-select{
 }
 
 fds-dialog{
-    --fds-dialog-min-width: 400px;
+    --fds-dialog-max-width: calc(100% - 32px);
+}
+
+fds-autocomplete{
+    --fds-menu-max-height: 50px;
 }
 
 

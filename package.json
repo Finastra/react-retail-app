@@ -9,7 +9,8 @@
     "start:server": "nx serve api",
     "dev": "nx build retail-app --watch",
     "test": "nx test",
-    "build": "nx build api && nx build retail-app"
+    "build": "nx build api && nx build retail-app",
+    "postinstall": "vendor-copy"
   },
   "private": true,
   "dependencies": {

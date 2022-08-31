@@ -33,6 +33,7 @@ function QuickTransfer() {
   let [account, setAccount] = useState("");
   let [memo, setMemo] = useState("");
   let [response, setResponse] = useState(null);
+  let [isChecked, setIsChecked] = useState(false);
 
   const getPayees = useCallback(async () => {
     try {
@@ -178,8 +179,9 @@ function QuickTransfer() {
     }
   }
 
-  const checkBoxStatus = (value) => {
-    if (value){
+  const checkBoxStatus = () => {
+    setIsChecked(!isChecked);
+    if (isChecked){
       setDisabled(true);
     }
     else {
@@ -241,12 +243,11 @@ function QuickTransfer() {
             <div className="sendto">
               <fds-autocomplete onInput={e => handlePayee(e)} icon="person" placeholder="Choose a person...">
                 {options.map((option) => 
-                  <mwc-list-item value={option.payeeName} onClick={e => itemClickPayee(option)}>{option.payeeName}</mwc-list-item>
-                  )}
+                  <mwc-list-item value={option.payeeName} onClick={e => itemClickPayee(option)}>{option.payeeName}</mwc-list-item>)}
               </fds-autocomplete>
             </div>
             <div className="amount">
-              <fds-textfield onInput={e => handleAmount(e)} icon="money" label="Amount" labelinside="true" validationmessage="Should be in the format x.x" pattern="^[0-9]*[.][0-9]*$"></fds-textfield>
+              <fds-textfield onInput={e => handleAmount(e)} icon="money" label="Amount" labelinside="true" validationmessage="Should be a number" pattern="([0-9]*[.])?[0-9]+"></fds-textfield>
             </div>
             <div className="button">
               <fds-button label="Send" icon="check" onClick={openDialogButton}>
@@ -280,11 +281,11 @@ function QuickTransfer() {
       >
         <Alert severity="success">{response}</Alert>
       </Snackbar>
-     <fds-dialog open={agreementState} heading="Terms and condition agreement" scrimClickAction="">
+      <fds-dialog open={agreementState} heading="Terms and condition agreement" scrimClickAction="">
         <p>To be able to access this app, you must first agree to the terms and conditions:</p>
         <div className="agreement">
-          <fds-checkbox  onClick={e => checkBoxStatus(e.target.checked)}/>
-          <span> I agree to the terms and conditions </span>
+          <fds-checkbox type="checkbox" id="check34" onClick={checkBoxStatus}/>
+          <label htmlFor="check34">I agree to the terms and conditions</label>
         </div>
         <fds-button secondary="" label="Confirm" slot="primaryAction" disabled={disabled} onClick={handleAgreement}></fds-button>
       </fds-dialog>

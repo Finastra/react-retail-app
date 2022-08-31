@@ -135,10 +135,11 @@ const getAccounts = useCallback(async () => {
           <fds-icon-button icon="more_vert" slot="actions"></fds-icon-button>
         </fds-app-bar>
         <div className="header">
+          <div className="header-pattern">
+            <img src={require("../assets/Header-Pattern.png")}/>
+          </div>
           <div className="header-title dark-theme">
-            <div className="header-icon">
-              <img width={64} height={64} src={require("../assets/Header-Icon.png")}/>
-            </div>
+            <img width={64} height={64} src={require("../assets/Header-Icon.png")}/>
             <div className="app-title">
               <span>Retail app</span>
               <div className="welcome-msg">

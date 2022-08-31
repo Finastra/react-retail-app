@@ -11,7 +11,7 @@
 .carousel-wrapper {
     display: flex;
     position: relative;
-    @include fds.padding(3, top, bottom);
+    @include fds.padding(3, bottom);
 }
 
 .carousel-content-wrapper {
