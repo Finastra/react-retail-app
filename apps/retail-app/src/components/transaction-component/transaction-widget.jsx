@@ -177,7 +177,6 @@ function Sheet() {
             <Grid item xs={12} md={4} >
               <div className="search-input">
                 <fds-search-input dense value={desc} onInput={(e) => filterTransactions(e)}></fds-search-input>
-                <span>{desc}</span>
               </div>
             </Grid>
             <Grid item xs={12} md={12}>

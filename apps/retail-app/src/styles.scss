@@ -8,7 +8,6 @@ body {
     margin: 0;
     padding: 0;
     list-style-type: none;
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,9 +15,8 @@ body {
       @include fds.use-dark-theme();
     }
   }
-  
 
-  @media only screen and (max-width: 900px) {
+@media only screen and (max-width: 900px) {
     body{
         .search-input{
             justify-content: flex-start;
@@ -26,6 +24,15 @@ body {
 
         .header-pattern {
             right: -170px;
+        }
+    }
+    
+}
+
+@media only screen and (min-width: 415px) {
+    body{
+        fds-dialog{
+            --fds-dialog-min-width: 450px;
         }
     }
     
@@ -62,6 +69,7 @@ body {
         .header-pattern {
             right: -240px;
         }
+
     }
     
 }
