@@ -258,7 +258,7 @@ function QuickTransfer() {
       <fds-dialog open={openDialog} heading="Payment Confirmation" scrimClickAction="">
         <p> Payee: <strong>{payee ? payee.payeeName : null}</strong> </p>
         <p> Amount: <strong>{amount} $</strong></p>
-        <fds-select outlined="" label="Account..." icon="payments">
+        <fds-select outlined="" icon="payments">
           {accounts.map((account) => 
             <mwc-list-item value={account.accountId} onClick={e => itemClickAcc(e.target.value)}>{account.nickname}</mwc-list-item>
           )}
