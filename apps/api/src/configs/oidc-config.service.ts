@@ -11,7 +11,7 @@ export class OidcConfigService implements OidcOptionsFactory {
   createModuleConfig(): OidcModuleOptions {
     const issuer = this.configService.get('OIDC_ISSUER');
     const client_id = this.configService.get('OIDC_CLIENT_ID');
-    const origin = this.configService.get('OIDC_ORIGIN');
+    const origin = this.configService.get('OIDC_ORIGIN') || `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
 
     this.logger.log(`
 issuer        : ${issuer}

@@ -10,6 +10,7 @@
 
 .sheet-item{
     @include fds.padding(4);
+    @include fds.padding(6, bottom);
     overflow: hidden;
 }
 
@@ -27,13 +28,8 @@
 }
 
 .transaction-list{
-    @include fds.padding(4, top);
     display: none;
-    max-height: 800px;    
-}
-
-.scrollable:hover{
-    overflow-y: overlay;
+    max-height: 1000px;   
 }
 
 .transaction-list.active{
@@ -60,18 +56,17 @@
     justify-content: flex-end
 }
 
-::-webkit-scrollbar {
+.scrollable::-webkit-scrollbar {
     width: 10px;
-    height: 10px;
-    
+    height: 5px;
 }
 
-::-webkit-scrollbar-thumb {
+.scrollable::-webkit-scrollbar-thumb {
     @include fds.bg-color(surface-selected);
     border-radius: 4px;
 }
 
-::-webkit-scrollbar-track {
+.scrollable::-webkit-scrollbar-track {
     @include fds.bg-color(surface);
 }
 

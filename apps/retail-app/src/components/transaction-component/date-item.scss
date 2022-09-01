@@ -1,7 +1,7 @@
 @use '@finastra/fds-theme' as fds;
 
 .box{
-    @include fds.property(background-color,  secondary-lighter);
+    @include fds.property(background-color, surface-selected);
     display: flex;
     border-radius: 4px;
     padding-top: 1%;

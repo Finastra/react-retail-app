@@ -1,101 +1,98 @@
 @use '@finastra/fds-theme' as fds;
 
-body {
-    background-color: var(--fds-background);
-    @include fds.bg-color(background);
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-
-      fds-button {
-        padding-left: var(--fds-spacing-3);
-      }
-
-      fds-user-profile fds-button {
-        line-height: 0px;
-        padding: var(--fds-spacing-0) var(--fds-spacing-3) var(--fds-spacing-2) var(--fds-spacing-3);
-      }
-
-      fds-user-profile fds-button + fds-button {
-        margin-top: var(--fds-spacing-2);
-      }
-
-      .fds-sidenav {
-        --mdc-drawer-width: 300px;
-        @include fds.property(background-color,  surface);
-        @include fds.text-color(on-surface);
-      }
-
-      .fds-sidenav-header {
-        @include fds.property(background-color,  background);
-        height: 210px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .fds-sidenav-list {
-        --mdc-theme-text-primary-on-background: var(--fds-on-background);
-        width: 100%;
-      }
-
-      .header {
-        background: url("../assets/Background.png") no-repeat;
-        height: 100%;
-        background-size: cover;
-        @include fds.property(background-color,  background);
-        width: 100%;
-      }
-
-      .header-title{
-        @include fds.padding(5);
-        @include fds.padding(6, top);
-      }
-
-      .header-icon{
-        float: left;
-      }
-
-      .app-title{
-        float: left;
-        margin-left: 10px;
-        @include fds.typography(headline-3);
-        @include fds.text-color(on-surface);
-      }
-
-      .welcome-msg{
-        @include fds.typography(body-1);
-        @include fds.text-color(on-surface);
-      }
-
-      .content{
-         @include fds.padding(5, top);
-      }
-
-      .main-content{
-        display: flex;
-        justify-content: center;
-        padding-right: 10%;
-        padding-left: 10%;
-        padding-top: 2%;
-         @include fds.property(background-color,  background);
-      }
-
-      .side-content{
-        margin-bottom: 10px;
-      }
-
-      .agreement{
-        display: flex;
-        align-items: center;
-      }
-      
-      .card{
-        display: flex;
-        justify-content: center;
-      }
-
+fds-button {
+  padding-left: var(--fds-spacing-3);
 }
+
+fds-user-profile fds-button {
+  line-height: 0px;
+  padding: var(--fds-spacing-0) var(--fds-spacing-3) var(--fds-spacing-2) var(--fds-spacing-3);
+}
+
+fds-user-profile fds-button + fds-button {
+  margin-top: var(--fds-spacing-2);
+}
+
+.fds-sidenav {
+  --mdc-drawer-width: 300px;
+  @include fds.property(background-color,  surface);
+  @include fds.text-color(on-surface);
+}
+
+.fds-sidenav-header {
+  @include fds.property(background-color,  background);
+  height: 210px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fds-sidenav-list {
+  --mdc-theme-text-primary-on-background: var(--fds-on-background);
+  width: 100%;
+}
+
+.header {
+  background: url("../assets/Background.png") no-repeat;
+  height: 100%;
+  background-size: cover;
+  @include fds.property(background-color,  background);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.header-title{
+  @include fds.padding(5);
+  display: flex;
+  align-items: center;
+}
+
+.header-pattern{
+  position: absolute;
+  right: 0px;
+}
+
+.app-title{
+  float: left;
+  margin-left: 10px;
+  @include fds.typography(headline-3);
+  @include fds.text-color(on-surface);
+}
+
+.welcome-msg{
+  @include fds.typography(body-1);
+  @include fds.text-color(on-surface);
+}
+
+.content{
+    @include fds.padding(5, top);
+}
+
+.main-content{
+  display: flex;
+  justify-content: center;
+  padding-right: 10%;
+  padding-left: 10%;
+  padding-top: 2%;
+  padding-bottom: 5%;
+  @include fds.property(background-color,  background);
+}
+
+.side-content{
+  margin-bottom: 20px;
+}
+
+.agreement{
+  display: flex;
+  align-items: center;
+}
+
+.card{
+  display: flex;
+  justify-content: center;
+}
+
 
 html,
 body {

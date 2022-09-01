@@ -3,7 +3,7 @@
 .icon{
     width: 32px;
     height: 32px;
-    @include fds.property(background-color,  secondary-lighter);
+    @include fds.property(background-color, surface-selected);
     border-radius: 32px;
     @include fds.property(color,  primary);
     display: flex;
@@ -18,35 +18,39 @@
     overflow: hidden;
 }
 
-.material-icons{
-    font-size: 16px;
-}
-
-.transaction-name{
-    @include fds.padding(3, left);
-    width: 100%;
-}
-
 .transaction-title{
-    @include fds.typography(subtitle-2);
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    
 }
 
 .transaction-subtitle{
     @include fds.typography(body-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @include fds.property(color, on-surface-medium);
 }    
 
 .transaction-amount{
     display: flex;
     align-items: center;
+    white-space: nowrap;
+    @include fds.padding(2, left);
+    @include fds.typography(subtitle-2);
 }
 
 .transaction-info{
     display: flex;
     flex-direction: column;
+    @include fds.padding(3, left);
+    flex: 6;
+    min-width: 0;
+}
+
+.transaction-desc{
+    @include fds.typography(subtitle-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 html,
